@@ -1,0 +1,20 @@
+
+{
+  "name": "query-template",
+  "version": "1.0.0",
+  "description": "query template with hasura",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "devakumar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.79.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
