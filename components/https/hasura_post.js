@@ -1,8 +1,8 @@
 var request = require('request');
-module.exports = function(req,res,head,body){
+module.exports = function(req,res,url,head,body){
 	console.log(head)
 	request({
-		url: 'https://data.oologic14.hasura-app.io/v1/query',
+		url: url,
 		method: 'POST',
 		headers: head,
 		json: {
