@@ -5,15 +5,15 @@ module.exports = function(app){
 		console.log(req.headers);
 		console.log(req.body);
 		var type = 'POST'
-		var url = 'https://data.oologic14.hasura-app.io/v1/query';
-		var head = {'Content-Type':'application/json','Authorization':'Bearer muyr51a4qtwskl0p0ithrk82biwzecrj'}
+		var url = 'http://data.hasura/v1/query';
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
 		var body = {
 		  "type" : "update",
 		  "args" : {
 		    "table" : "tbl_user_profile",
 		    "$set": {"first_name":req.body.first_name,"last_name":"req.body.last_name"},
 		    "where": {
-		        "id": req.body.unique_id
+		        "unique_id": req.body.unique_id
 		    }
 		  }
 		}

@@ -4,7 +4,7 @@ module.exports = function(req,res){
 	request({
 		url: 'http://data.hasura/v1/query',
 		method: 'POST',
-		headers: {'Content-Type':'application/json','Authorization':'Bearer pchjjclr94ba1xa00qcq6hf7lo4df8td'},
+		headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid},
 		json: {
 			"type" : "insert",
 			"args" : {
