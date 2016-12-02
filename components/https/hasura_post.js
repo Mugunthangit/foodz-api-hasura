@@ -1,9 +1,9 @@
 var request = require('request');
-module.exports = function(req,res,url,head,body){
+module.exports = function(req,res,type,url,head,body){
 	console.log(head)
 	request({
 		url: url,
-		method: 'POST',
+		method: type,
 		headers: head,
 		json: {
 			"type" : "insert",
