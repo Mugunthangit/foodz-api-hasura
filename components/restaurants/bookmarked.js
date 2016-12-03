@@ -5,8 +5,8 @@ module.exports = function(app){
 		console.log(req.headers);
 		console.log(req.body);
 		var type = 'POST'
-		var url = 'https://data.oologic14.hasura-app.io/v1/query';
-		var head = {'Content-Type':'application/json','Authorization':'Bearer prhlt4buy6j5shxp2wni7gpw22q844pw'}
+		var url = 'http://data.hasura/v1/query';
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
 		var body = {
 		  "type" : "select",
 		  "args" : {
