@@ -3,6 +3,6 @@ module.exports = function(app){
 	app.use(myParser.urlencoded({extended : true}));
 	app.use(myParser.json());
 	app.get("/",function(req,res){
-		res.send("api for /create_profile")
+		res.send(" Hasura api Microservice running on 4000 ")
 	})
 }
