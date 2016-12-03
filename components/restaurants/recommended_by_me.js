@@ -1,12 +1,12 @@
 var request = require('request');
 var myParser = require("body-parser");
 module.exports = function(app){
-	app.post("/trending_restaurants", function(req, res) {
+	app.post("/restaurants/recommended_by_me", function(req, res) {
 		console.log(req.headers);
 		console.log(req.body);
 		var type = 'POST'
-		var url = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
+		var url = 'https://data.oologic14.hasura-app.io/v1/query';
+		var head = {'Content-Type':'application/json','Authorization':'Bearer prhlt4buy6j5shxp2wni7gpw22q844pw'}
 		var body = {
 		  "type" : "select",
 		  "args" : {
