@@ -1,7 +1,7 @@
 var request = require('request');
 var myParser = require("body-parser");
 module.exports = function(app){
-	app.post("/trending_restaurents", function(req, res) {
+	app.post("/trending_restaurants", function(req, res) {
 		console.log(req.headers);
 		console.log(req.body);
 		var type = 'POST'
