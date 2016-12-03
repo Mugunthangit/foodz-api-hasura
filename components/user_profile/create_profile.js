@@ -15,8 +15,9 @@ module.exports = function(app){
 				"objects": [
 				{"hasura_userid" : req.body.hasura_userid, "unique_id": req.body.unique_id,"first_name":req.body.first_name,
 				"last_name": req.body.last_name,"profile_picture":req.body.profile_picture,
-				"email":req.body.email,"mobile_no":req.body.mobile_no,"tbl_master_profile_statusunique_id":req.body.tbl_master_profile_statusunique_id,
-				"facebook_profile":req.body.facebook_profile}
+				"facebook_profile":req.body.facebook_profile,"personal_description":req.body.personal_description,
+				"city": req.body.city,"state": req.body.state,"country": req.body.country,
+				"email":req.body.email,"mobile_no":req.body.mobile_no,"tbl_master_profile_statusunique_id":req.body.tbl_master_profile_statusunique_id}
 				]
 			}
 		} 

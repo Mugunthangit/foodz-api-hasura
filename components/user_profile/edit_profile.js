@@ -11,7 +11,8 @@ module.exports = function(app){
 		  "type" : "update",
 		  "args" : {
 		    "table" : "tbl_user_profile",
-		    "$set": {"first_name":req.body.first_name,"last_name":"req.body.last_name"},
+		    "$set": {"first_name":req.body.first_name,"last_name":"req.body.last_name","profile_picture":req.body.profile_picture,
+				"facebook_profile":req.body.facebook_profile},
 		    "where": {
 		        "unique_id": req.body.unique_id
 		    }
