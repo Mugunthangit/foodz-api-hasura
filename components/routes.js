@@ -7,4 +7,6 @@ module.exports = function(app){
 	require('./restaurants/popular_among_my_friends')(app);
 	require('./restaurants/recommended_by_me')(app);
 	require('./restaurants/recommended_to_me')(app);
+    require('./sponsor/restaurant')(app);
+    require('./https/sampleRequest')(app);
 }
