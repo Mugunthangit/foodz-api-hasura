@@ -1,6 +1,7 @@
 var request = require('request');
 var myParser = require("body-parser");
 var uuid = require('node-uuid');
+var shortid = require('shortid');
 
 module.exports = function(app){
 	app.post("/create_sponsor", function(req, res) {
@@ -18,6 +19,7 @@ module.exports = function(app){
 				"objects": [
 				{"hasura_userid": req.body.hasura_userid,
 				"unique_id": uuid.v1(),
+				"ticket_code": 'FOODZ-'+shortid.generate(),
 				"tbl_user_profileunique_id": req.body.tbl_user_profileunique_id,
 				"tbl_user_profileunique_id2": req.body.tbl_user_profileunique_id2,
 				"sponsored_user_facebook_id": req.body.sponsored_user_facebook_id,
