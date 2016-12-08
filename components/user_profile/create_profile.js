@@ -1,5 +1,7 @@
 var request = require('request');
 var myParser = require("body-parser");
+var uuid = require('node-uuid');
+
 module.exports = function(app){
 	app.post("/create_profile", function(req, res) {
 		console.log(req.headers);
@@ -20,7 +22,8 @@ module.exports = function(app){
 				 "pincode", "tbl_master_profile_statusunique_id"],
 				"objects": [
 				{"hasura_userid" : req.body.hasura_userid, 
-				"unique_id": req.body.unique_id,"first_name":req.body.first_name,
+				"unique_id": uuid.v1(),
+				"first_name":req.body.first_name,
 				"last_name": req.body.last_name,
 				"profile_picture":req.body.profile_picture,
 				"facebook_profile":req.body.facebook_profile,
