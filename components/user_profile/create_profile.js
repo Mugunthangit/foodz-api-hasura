@@ -12,9 +12,12 @@ module.exports = function(app){
 			"type" : "insert",
 			"args" : {
 				"table" : "tbl_user_profile",
-				"returning": ["id","hasura_userid","unique_id","first_name",
-				"last_name","profile_picture",
-				"tbl_master_profile_statusunique_id","facebook_profile"],
+				"returning": ["id", "hasura_userid", "unique_id",
+				 "first_name", "last_name", "middle_name", "personal_description",
+				 "nickname", "company_name", "profile_picture", "facebook_profile",
+				 "facebook_access_token", "email", "alt_email", "telephone", "alt_telephone",
+				 "country_code", "mobile_no", "address", "city", "state", "country",
+				 "pincode", "tbl_master_profile_statusunique_id"],
 				"objects": [
 				{"hasura_userid" : req.body.hasura_userid, 
 				"unique_id": req.body.unique_id,"first_name":req.body.first_name,
