@@ -1,5 +1,7 @@
 var request = require('request');
 var myParser = require("body-parser");
+var uuid = require('node-uuid');
+
 module.exports = function(app){
 	app.post("/create_sponsor", function(req, res) {
 		console.log(req.headers);
@@ -15,7 +17,7 @@ module.exports = function(app){
 				"returning": ["id","unique_id","ticket_code","tbl_restaurantsunique_id","expired_time"],
 				"objects": [
 				{"hasura_userid": req.body.hasura_userid,
-				"unique_id": req.body.unique_id,
+				"unique_id": uuid.v1(),
 				"tbl_user_profileunique_id": req.body.tbl_user_profileunique_id,
 				"tbl_user_profileunique_id2": req.body.tbl_user_profileunique_id2,
 				"sponsored_user_facebook_id": req.body.sponsored_user_facebook_id,
