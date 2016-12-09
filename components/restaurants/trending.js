@@ -11,11 +11,11 @@ module.exports = function(app){
 		  "type" : "select",
 		  "args" : {
 		    "table" : "tbl_restaurants",
-		    "columns": ["id","restaurant_name","description","working_hrs",
-		    "restaurant_facebook_page","banner_image","hashtag","avg_cost",
-		    "city","geolocation_lat","geolocation_long","website"]
+		    "columns": ["id","unique_id","restaurant_name","description",
+		    "banner_image","avg_cost",
+		    "city","geolocation_lat","geolocation_long"]
 		  }
 		} 
-    require('.././https/hasura_post')(req,res,type,url,head,body);
+    require('.././https/temp_hasura_post')(req,res,type,url,head,body);
 	});
 }
