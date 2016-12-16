@@ -13,7 +13,8 @@ module.exports = function(app){
 		    "table" : "tbl_restaurants",
 		    "columns": ["id","unique_id","restaurant_name","description",
 		    "banner_image","avg_cost",
-		    "city","geolocation_lat","geolocation_long"]
+		    "city","geolocation_lat","geolocation_long","mobile","alt_mobile","email","website",
+		    "payment_types","no_of_seats","max_group_limit"]
 		  }
 		} 
     require('.././https/temp_hasura_post')(req,res,type,url,head,body);

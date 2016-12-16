@@ -2,15 +2,15 @@ var request = require('request');
 var myParser = require("body-parser");
 var uuid = require('node-uuid');
 var shortid = require('shortid');
-
+var generator = require('./unique_generator');
 module.exports = function(app){
 	app.post("/create_sponsor", function(req, res) {
 		console.log(req.headers);
 		console.log(req.body);
+		console.log(generator(app,req.body.hasura_userid));
 		var type = 'POST'
-		var url = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',
-					'X-Hasura-User-ID':req.body.hasura_userid}
+		var url = 'https://data.oologic14.hasura-app.io/v1/query';
+		var head = {'Content-Type':'application/json','Authorization':'Bearer g5vhfx1i5r77kci3b9ebz80jyw5zv7d6' }
 		var body = {
 			"type" : "insert",
 			"args" : {
@@ -19,7 +19,7 @@ module.exports = function(app){
 				"objects": [
 				{"hasura_userid": req.body.hasura_userid,
 				"unique_id": uuid.v1(),
-				"ticket_code": 'FOODZ-'+shortid.generate(),
+				"ticket_code": generator(app,req.body.hasura_userid),
 				"tbl_user_profileunique_id": req.body.tbl_user_profileunique_id,
 				"tbl_user_profileunique_id2": req.body.tbl_user_profileunique_id2,
 				"sponsored_user_facebook_id": req.body.sponsored_user_facebook_id,

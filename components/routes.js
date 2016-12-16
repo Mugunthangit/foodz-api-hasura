@@ -8,6 +8,5 @@ module.exports = function(app){
 	require('./restaurants/recommended_by_me')(app);
 	require('./restaurants/recommended_to_me')(app);
     require('./sponsor/restaurant')(app);
-    require('./sponsor/unique_generator')(app);
     require('./https/sampleRequest')(app);
 }
