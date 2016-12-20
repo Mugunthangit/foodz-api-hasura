@@ -44,9 +44,9 @@ function condtion_method(error, response, body){
 
 module.exports = function(app,hasura_userid,callback){
 	request({
-		url: 'https://data.oologic14.hasura-app.io/v1/query',
+		url: 'http://data.hasura/v1/query',
 		method: 'POST',
-		headers: {'Content-Type':'application/json','Authorization':'Bearer g5vhfx1i5r77kci3b9ebz80jyw5zv7d6'},
+		headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_userid},
 		json: {
 			"type" : "select",
 			"args" : {
@@ -57,12 +57,13 @@ module.exports = function(app,hasura_userid,callback){
 	}, function(error, response, body){
 		var var_condtion_method = condtion_method(error, response, body);
 		console.log(var_condtion_method);
+		console.log('----------');
 		localStorage.setItem("ticket_code_value", var_condtion_method);
     	console.log(localStorage.getItem('ticket_code_value'));
 
 		return localStorage.getItem('ticket_code_value');
 	});
-	if(localStorage.getItem(ticket_code_value)){
+	if(localStorage.getItem('ticket_code_value')){
 		return localStorage.getItem('ticket_code_value');
 	}
 }
