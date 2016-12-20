@@ -2,7 +2,7 @@ var request = require('request');
 var myParser = require("body-parser");
 var uuid = require('node-uuid');
 var shortid = require('shortid');
-var generator = require('./unique_generator');
+var generator = require('./gen');
 module.exports = function(app){
 	app.post("/create_sponsor", function(req, res) {
 		console.log(req.headers);

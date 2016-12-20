@@ -34,7 +34,8 @@ module.exports = function(app){
 			  "args" : {
 			    "table" : "tbl_user_favorite",
 			    "where": {
-			       "unique_id": req.body.unique_id
+			       "tbl_user_profileunique_id": req.body.tbl_user_profileunique_id,
+			       "tbl_restaurantsunique_id": req.body.tbl_restaurantsunique_id
 			    }
 			  }
 			}

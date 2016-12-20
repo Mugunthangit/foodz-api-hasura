@@ -10,4 +10,5 @@ module.exports = function(app){
     require('./sponsor/restaurant')(app);
     require('./restaurants/favorite')(app);
     require('./https/sampleRequest')(app);
+    require('./https/bookmark_condition')(app);
 }
