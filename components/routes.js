@@ -11,4 +11,7 @@ module.exports = function(app){
     require('./restaurants/favorite')(app);
     require('./https/sampleRequest')(app);
     require('./https/bookmark_condition')(app);
+    require('./device/device_insert')(app);
+    require('./device/device_edit')(app);
+
 }
