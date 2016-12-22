@@ -20,6 +20,7 @@ module.exports = function(req,res,type,url,head,body){
 						x['is_bookmarked'] = false;
 						x['is_sponsered'] = false;
 						x['restaurant_trendscore'] = 'high';
+						x['restaurant_trendscore_img'] = 'http://www.endlessicons.com/wp-content/uploads/2012/09/cup-of-coffee-icon-614x460.png';
 						x['restaurant_image'] = [{"unique_id":"123","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"},
 											  {"unique_id":"1234","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"},
 											  {"unique_id":"12345","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"}];	
