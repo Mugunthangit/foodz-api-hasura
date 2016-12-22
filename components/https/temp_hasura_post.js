@@ -18,8 +18,6 @@ module.exports = function(req,res,type,url,head,body){
 			console.log(error);
 		} else {
 			var injected_response_data = body;
-			console.log("+====================");
-			console.log(injected_response_data,"----------------------------------");
 			var user_unique_id = req.body.unique_id;
 			var hasura_user_id = req.body.unique_id;
 			localStorage.setItem("user_unique_id", user_unique_id);
