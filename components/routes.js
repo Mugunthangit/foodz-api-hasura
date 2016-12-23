@@ -11,4 +11,5 @@ module.exports = function(app){
     require('./restaurants/favorite')(app);
     require('./https/sampleRequest')(app);
     require('./https/bookmark_condition')(app);
+    require('./sponsor/sponsor_tickets_list')(app);
 }

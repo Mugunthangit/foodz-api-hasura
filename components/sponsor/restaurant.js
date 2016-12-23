@@ -27,7 +27,7 @@ module.exports = function(app){
                 "no_of_dinein": req.body.no_of_dinein,
                 "shared_message": req.body.shared_message,
                 "tbl_master_share_typeunique_id": req.body.tbl_master_share_typeunique_id,
-                "tbl_master_ticket_statusunique_id": req.body.tbl_master_ticket_statusunique_id}
+                "tbl_master_ticket_statusunique_id": 'TICKET001'}
 				]
 			}
 		} 
