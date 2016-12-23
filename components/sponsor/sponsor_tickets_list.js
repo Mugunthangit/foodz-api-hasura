@@ -14,7 +14,7 @@ module.exports = function(app){
 		  "args" : {
 		    "table" : "tbl_restaurant_sponsors",
 		    "columns": ["*.*"],
-		    "where": {"tbl_user_profileunique_id": "123"}
+		    "where": {"tbl_user_profileunique_id": req.body.tbl_user_profileunique_id}
 		  }
 		}
     require('.././https/tickets_list')(req,res,type,url,head,body);

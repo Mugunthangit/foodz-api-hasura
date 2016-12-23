@@ -1,4 +1,4 @@
-var request = require('request');
+var request = require('request');	
 module.exports = function(req,res,type,url,head,body){
 	console.log(head)
 	request({
