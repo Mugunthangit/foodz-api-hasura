@@ -13,5 +13,5 @@ module.exports = function(app){
     require('./https/bookmark_condition')(app);
     require('./device/device_insert')(app);
     require('./device/device_edit')(app);
-
+    require('./sponsor/sponsor_tickets_list')(app);
 }
