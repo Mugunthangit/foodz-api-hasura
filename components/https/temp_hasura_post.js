@@ -19,7 +19,7 @@ module.exports = function(req,res,type,url,head,body){
 		} else {
 			var injected_response_data = body;
 			var user_unique_id = req.body.unique_id;
-			var hasura_user_id = req.body.unique_id;
+			var hasura_user_id = req.body.hasura_userid;
 			localStorage.setItem("user_unique_id", user_unique_id);
 			localStorage.setItem("hasura_user_id", hasura_user_id);
 			injected_response_data.forEach( function (arrayItem)
