@@ -33,7 +33,7 @@ module.exports = function(req,res,type,url,head,body){
 				x['food_discount'] = '10%';
 				x['is_sponsered'] = false;
 				x['restaurant_trendscore'] = 'high';
-				x['trend_image_url'] = 'http://www.nandos.com/sites/all/themes/nandos/images/our-home-image-1.png';
+				x['trend_image_url'] = 'http://citizenactionny.org/wp-content/uploads/2013/05/cup-of-coffee.jpg';
 				x['restaurant_image'] = [{"unique_id":"123","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"},
 				{"unique_id":"1234","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"},
 				{"unique_id":"12345","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"}];	
