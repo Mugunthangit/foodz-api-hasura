@@ -16,9 +16,12 @@ module.exports = function(app){
     require('./sponsor/sponsor_tickets_list')(app);
 
     // web api
-
     require('./web/restaurant/create')(app);
     require('./web/restaurant/edit')(app);
-
-
+    require('./web/restaurant/create_hash_tag')(app);
+    require('./web/restaurant/create_image')(app);
+    require('./web/restaurant/create_menu')(app);
+    require('./web/restaurant/create_cusine')(app);
+    require('./web/restaurant/create_news')(app);
+    require('./web/restaurant/create_campaign')(app);
 }
