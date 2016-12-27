@@ -14,4 +14,8 @@ module.exports = function(app){
     require('./device/device_insert')(app);
     require('./device/device_edit')(app);
     require('./sponsor/sponsor_tickets_list')(app);
+    require('./restaurants_insert/restaurant_insert')(app);
+    require('./restaurants_insert/restaurant_edit')(app);
+
+
 }
