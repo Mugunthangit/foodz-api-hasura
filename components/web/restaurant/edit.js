@@ -49,6 +49,6 @@ console.log(req.headers);
 				}
 			}
 		}
-		require('.././https/hasura_post')(req,res,type,url,head,body);
+		require('../.././https/hasura_post')(req,res,type,url,head,body);
 	});
 }
