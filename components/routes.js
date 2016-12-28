@@ -24,4 +24,6 @@ module.exports = function(app){
     require('./web/restaurant/create_cusine')(app);
     require('./web/restaurant/create_news')(app);
     require('./web/restaurant/create_campaign')(app);
+    require('./web/ticket_setup/create')(app);
+
 }
