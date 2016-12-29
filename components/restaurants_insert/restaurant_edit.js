@@ -6,8 +6,8 @@ module.exports = function(app){
 console.log(req.headers);
 		console.log(req.body);
 		var type = 'POST'
-		var url = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid}
+		var url  = 'https://data.oologic14.hasura-app.io/v1/query';
+		var head = {'Content-Type':'application/json','Authorization': 'Bearer hbspj9dh2opcowd5nxj0s7bpl3mix3uv'};
 		var body = {
 			"type" : "update",
 			"args" : {
@@ -16,6 +16,7 @@ console.log(req.headers);
 				"hashtag", "address", "avg_cost", "city", "state", "pincode","geolocation_lat","geolocation_long", "telephone","alt_telephone", "mobile","alt_mobile", "email", "website",
 				"locking_period_min", "restaurant_name", "description", "working_hrs", "tbl_master_languageunique_id", "payment_types", "no_of_seats", "max_group_limit"],
 				"$set": {
+					"unique_id": req.body.unique_id,
 					"tbl_user_profileunique_id": req.body.tbl_user_profileunique_id,
 					"foodz_agenttbl_user_profileunique_id": req.body.foodz_agenttbl_user_profileunique_id,
 					"restaurant_facebook_page":req.body.restaurant_facebook_page,
