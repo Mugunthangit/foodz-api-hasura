@@ -16,6 +16,9 @@ module.exports = function(app){
     require('./sponsor/sponsor_tickets_list')(app);
     require('./restaurants_insert/restaurant_insert')(app);
     require('./restaurants_insert/restaurant_edit')(app);
+    // require('./restaurant_news/rest_news')(app);
+    require('./restaurants/restaurant_menu')(app);
+
 
 
 }
