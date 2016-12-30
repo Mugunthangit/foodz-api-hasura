@@ -14,7 +14,6 @@ module.exports = function(app){
     require('./device/device_insert')(app);
     require('./device/device_edit')(app);
     require('./sponsor/sponsor_tickets_list')(app);
-    // web api
     require('./web/restaurant/create')(app);
     require('./web/restaurant/edit')(app);
     require('./web/restaurant/create_hash_tag')(app);
@@ -24,5 +23,11 @@ module.exports = function(app){
     require('./web/restaurant/create_news')(app);
     require('./web/restaurant/create_campaign')(app);
     require('./web/ticket_setup/create')(app);
+    require('./restaurants/restaurant_menu')(app);
+    require('./restaurant_news/rest_news')(app);
+    require('./restaurant_news/lookup')(app);
+    require('./user_settings/user_settings_insert')(app);
+    require('./user_settings/user_settings_edit')(app);
+
 
 }
