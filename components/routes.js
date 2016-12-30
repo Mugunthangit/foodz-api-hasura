@@ -28,6 +28,6 @@ module.exports = function(app){
     require('./restaurant_news/lookup')(app);
     require('./user_settings/user_settings_insert')(app);
     require('./user_settings/user_settings_edit')(app);
-
+    require('./suggest_restaurant/suggest_restaurant_insert')(app);
 
 }
