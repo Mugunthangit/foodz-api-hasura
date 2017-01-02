@@ -24,10 +24,10 @@ module.exports = function(app){
     require('./web/restaurant/create_campaign')(app);
     require('./web/ticket_setup/create')(app);
     require('./restaurants/restaurant_menu')(app);
-    require('./restaurant_news/rest_news')(app);
-    require('./restaurant_news/lookup')(app);
+    // require('./restaurant_news/rest_news')(app);
+    // require('./restaurant_news/lookup')(app);
     require('./user_settings/user_settings_insert')(app);
     require('./user_settings/user_settings_edit')(app);
     require('./suggest_restaurant/suggest_restaurant_insert')(app);
-
+    require('./crons/samplecron')();
 }
