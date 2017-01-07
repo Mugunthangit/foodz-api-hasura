@@ -2,6 +2,7 @@ module.exports = function(app){
 	require('./root')(app);
 	require('./user_profile/create_profile')(app);
 	require('./user_profile/edit_profile')(app);
+    require('./user_profile/get_profile')(app);
 	require('./restaurants/trending')(app);
 	require('./restaurants/bookmarked')(app);
 	require('./restaurants/popular_among_my_friends')(app);
@@ -29,5 +30,8 @@ module.exports = function(app){
     require('./user_settings/user_settings_insert')(app);
     require('./user_settings/user_settings_edit')(app);
     require('./suggest_restaurant/suggest_restaurant_insert')(app);
+    require('./bug_report/bug_report_post')(app);
+    require('./search_filter/search')(app);
+    require('./rm_api/sponsor_redemption')(app);
 
 }
