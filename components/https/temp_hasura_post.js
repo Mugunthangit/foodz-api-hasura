@@ -51,8 +51,6 @@ module.exports = function(req,res,type,url,head,body){
 				    console.log('after response','---------------------------------------');
 				    return true;
 				}, 3000);
-			
-
 		}
 	});
 }
