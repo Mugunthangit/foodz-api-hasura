@@ -32,6 +32,6 @@ module.exports = function(app){
     require('./suggest_restaurant/suggest_restaurant_insert')(app);
     require('./bug_report/bug_report_post')(app);
     require('./search_filter/search')(app);
-    require('./rm_api/sponsor_redemption')(app);
-
+    require('./rm_api/sponsor_redeemption')(app);
+    require('./rm_api/edit_sponsor_redeemption')(app);
 }

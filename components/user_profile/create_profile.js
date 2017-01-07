@@ -9,7 +9,7 @@ module.exports = function(app){
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',
-					'X-Hasura-User-ID':req.body.hasura_userid}
+		'X-Hasura-User-ID':req.body.hasura_userid};
 		var body = {
 			"type" : "insert",
 			"args" : {
@@ -21,20 +21,24 @@ module.exports = function(app){
 				 "country_code", "mobile_no", "address", "city", "state", "country",
 				 "pincode", "tbl_master_profile_statusunique_id"],
 				"objects": [
-				{"hasura_userid" : req.body.hasura_userid, 
-				"unique_id": uuid.v1(),
-				"first_name":req.body.first_name,
-				"last_name": req.body.last_name,
-				"profile_picture":req.body.profile_picture,
-				"facebook_profile":req.body.facebook_profile,
-				"personal_description":req.body.personal_description,
-				"city": req.body.city,"state": req.body.state,
-				"country": req.body.country,"email":req.body.email,
-				"mobile_no":req.body.mobile_no,
-				"tbl_master_profile_statusunique_id":req.body.tbl_master_profile_statusunique_id}
+					{
+					"hasura_userid" : req.body.hasura_userid, 
+					"unique_id": uuid.v1(),
+					"first_name":req.body.first_name,
+					"last_name": req.body.last_name,
+					"profile_picture":req.body.profile_picture,
+					"facebook_profile":req.body.facebook_profile,
+					"personal_description":req.body.personal_description,
+					"city": req.body.city,
+					"state": req.body.state,
+					"country": req.body.country,
+					"email":req.body.email,
+					"mobile_no":req.body.mobile_no,
+					"tbl_master_profile_statusunique_id": "PROF002"
+					}
 				]
 			}
 		} 
-    require('.././https/hasura_post')(req,res,type,url,head,body);
+    require('.././https/hasura_profile_post')(req,res,type,url,head,body);
 	});
 }
