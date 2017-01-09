@@ -21,8 +21,25 @@ module.exports = function(app){
 				"$set": {
 					"first_name":req.body.first_name,
 					"last_name":req.body.last_name,
+					"nickname": req.body.nickname,
+					"company_name": req.body.company_name,
+					"email": req.body.email,
+					"facebook_access_token": req.body.facebook_access_token,
+					"alt_email": req.body.alt_email,
+					"telephone": req.body.telephone,
+					"alt_telephone": req.body.alt_telephone,
+					"country_code": req.body.country_code,
+					"mobile_no": req.body.mobile_no,
+					"address": req.body.address,
+					"state": req.body.state,
+					"country": req.body.country,
+					"pincode": req.body.pincode,
+					"tbl_master_profile_statusunique_id": req.body.tbl_master_profile_statusunique_id,
+					"city": req.body.city,
 					"profile_picture":req.body.profile_picture,
-					"facebook_profile":req.body.facebook_profile
+					"facebook_profile":req.body.facebook_profile,
+					"personal_description":req.body.personal_description,
+
 				},
 				"where": {
 					"unique_id": req.body.unique_id

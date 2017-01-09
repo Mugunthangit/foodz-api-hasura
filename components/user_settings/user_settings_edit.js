@@ -22,7 +22,10 @@ module.exports = function(app){
 					"enable_suggestions"],
 				"$set": {
 					"enable_notification": req.body.enable_notification,
-					"enable_suggestions": req.body.enable_suggestions
+					"enable_suggestions": req.body.enable_suggestions,
+					"user_cuisines_csv": req.body.user_cuisines_csv,
+					"users_hash_tag_csv": req.body.users_hash_tag_csv,
+					"free_restaurant_create_count": req.body.free_restaurant_create_count
 				},
 				"where": {
 					"tbl_user_profileunique_id": req.body.tbl_user_profileunique_id

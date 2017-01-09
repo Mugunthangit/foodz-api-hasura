@@ -2,7 +2,7 @@ var request = require('request');
 var myParser = require("body-parser");
 
 module.exports = function(app){
-    app.post("/restaurant_menu_category", function(req, res) {
+    app.post("/restaurant_menu_list", function(req, res) {
 	request({
 		url: 'http://data.hasura/v1/query',
 		method: 'POST',
@@ -12,10 +12,7 @@ module.exports = function(app){
 		  "type" : "select",
 		  "args" : {
 		    "table" : "tbl_restaurant_menu",
-		    "columns": ["*.*"],
-		    "where": {"tbl_restaurantsunique_id": req.body.tbl_restaurantsunique_id,
-			"is_recommended": true},
-			"limit" : 3,
+		    "columns": ["*.*"]
 		  }
 		}
 	}, function(error, response, body){
