@@ -35,4 +35,5 @@ module.exports = function(app){
     require('./search_filter/search')(app);
     require('./rm_api/sponsor_redeemption')(app);
     require('./rm_api/edit_sponsor_redeemption')(app);
+    require('./crons/samplecron')();
 }
