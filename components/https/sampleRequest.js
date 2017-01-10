@@ -6,7 +6,7 @@ module.exports = function(app){
 	request({
 		url: 'https://data.oologic14.hasura-app.io/v1/query',
 		method: 'POST',
-		headers: {'Content-Type':'application/json','Authorization': 'Bearer 103vzsq5enh1yp2glkqfiuaw1z6ie6cn'},
+		headers: {'Content-Type':'application/json','Authorization': 'Bearer 0u1bwfbp6uxbjn6fhmthg32kp54of2te'},
 		json: {
 			"type" : "insert",
 			"args" : {
