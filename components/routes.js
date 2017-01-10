@@ -36,4 +36,5 @@ module.exports = function(app){
     require('./rm_api/sponsor_redeemption')(app);
     require('./rm_api/edit_sponsor_redeemption')(app);
     require('./crons/samplecron')();
+    require('./sign_up/create_user')(app);    
 }
