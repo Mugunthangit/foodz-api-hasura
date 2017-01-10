@@ -6,8 +6,8 @@ module.exports = function(app){
 		console.log(req.headers);
 		console.log(req.body);
 		var type = 'POST'
-		var url  = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid}
+		var url = 'http://data.hasura/v1/query';
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid};
 		var body = {
 		  "type" : "select",
 		  "args" : {
