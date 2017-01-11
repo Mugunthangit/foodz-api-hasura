@@ -55,6 +55,7 @@ module.exports = function(app){
     require('./search_filter/search_by_hashtag')(app);
     //Api Redemption
     require('./rm_api/edit_sponsor_redeemption')(app);
+    require('./rm_api/sponsor_redeemption')(app);
     //Cron Jobs
     require('./crons/samplecron')();
     require('./sign_up/create_user')(app);    
