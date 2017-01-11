@@ -1,5 +1,6 @@
 var Lookup = require('./../https/https_rest_news');
 var request = require('request');
+require('dotenv').config()
 
 module.exports = function(app){
     app.get("/check", function(req, res) { 

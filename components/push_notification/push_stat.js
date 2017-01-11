@@ -1,5 +1,6 @@
 var request = require('request');
 var apn = require('apn')
+require('dotenv').config()
 
 module.exports = function(req,res,type,url,head,body){
 	console.log(head)

@@ -1,4 +1,5 @@
 var apn = require('apn');
+require('dotenv').config()
 
 var tokens = ["fa65c92002a327372805e6f71a3b30fdcd4ee7c202ac898c800f246a72a4df75"];
 

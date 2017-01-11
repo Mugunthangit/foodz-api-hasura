@@ -1,5 +1,6 @@
 var request = require('request');
 var uuid = require('node-uuid');
+require('dotenv').config()
 
 module.exports = function(req,res,type,url,head,body){
 	console.log(head)

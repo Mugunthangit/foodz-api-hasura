@@ -1,5 +1,6 @@
 var request = require('request');
 var myParser = require("body-parser");
+require('dotenv').config()
 
 module.exports = function(app){
 	app.post("/search_by_fb_friend", function(req, res){

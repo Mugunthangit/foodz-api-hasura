@@ -3,6 +3,7 @@ var myParser = require("body-parser");
 var uuid = require('node-uuid');
 var shortid = require('shortid');
 var generator = require('./unique_generator');
+require('dotenv').config()
 module.exports = function(app){
 	app.post("/create_sponsor", function(req, res) {
 		console.log(req.headers);
