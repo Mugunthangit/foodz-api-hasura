@@ -1,4 +1,6 @@
 var request = require('request');
+require('dotenv').config()
+
 module.exports = function(app){
     app.post("/bookmark_condition", function(req, res) {
 	request({

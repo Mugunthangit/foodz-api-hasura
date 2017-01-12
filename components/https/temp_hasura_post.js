@@ -1,4 +1,6 @@
 var request = require('request');
+require('dotenv').config()
+
 var bookmark_value = require('./bookmark_value');
 
 if (typeof localStorage === "undefined" || localStorage === null) {

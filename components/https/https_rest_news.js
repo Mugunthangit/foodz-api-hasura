@@ -1,5 +1,6 @@
 var request = require('request');
 var rest_news_callback = require('./rest_news_callback');
+require('dotenv').config()
 
 if (typeof localStorage === "undefined" || localStorage === null) {
 	var LocalStorage = require('node-localstorage').LocalStorage;

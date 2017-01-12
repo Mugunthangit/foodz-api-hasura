@@ -1,5 +1,6 @@
 var request = require('request');
 var myParser = require("body-parser");
+require('dotenv').config()
 module.exports = function(app){
 	app.post("/restaurants/bookmarked", function(req, res) {
 		console.log(req.headers);

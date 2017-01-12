@@ -1,6 +1,7 @@
 var request = require('request');
 var myParser = require("body-parser");
 var uuid = require('node-uuid');
+require('dotenv').config()
 
 module.exports = function(app){
 	app.post("/bug_report", function(req, res) {

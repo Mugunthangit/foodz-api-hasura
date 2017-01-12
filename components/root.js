@@ -1,4 +1,6 @@
 var myParser = require("body-parser");
+require('dotenv').config()
+
 module.exports = function(app){
 	app.use(myParser.urlencoded({extended : true}));
 	app.use(myParser.json());

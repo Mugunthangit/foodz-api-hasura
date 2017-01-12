@@ -1,5 +1,6 @@
 var schedule = require('node-schedule');
 var myParser = require("body-parser");
+require('dotenv').config()
 
 
 module.exports = function(){
