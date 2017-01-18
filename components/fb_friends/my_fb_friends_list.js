@@ -5,21 +5,41 @@ module.exports = function(app){
 	app.post("/my_fb_friends", function(req, res){ 
 	var data = []
 	var fb_friends_data =  req.body.fb_user_friend;
-	// var something = fb_friends_data
 	for (i=0; i<fb_friends_data.length; i++){	
 		var obj = fb_friends_data[i];
-		// var obj1 = JSON.stringify(obj);
-		console.log(obj)
+		console.log(obj.fb_friend_name)
 		console.log("===================")
 		// console.log(obj1)
 		// console.log("===================")
 		// console.log(obj.friends_facebook_id);
 		console.log(i);
-		request({
-			url: 'http://data.hasura/v1/query',
+        request({
+        	url: 'https://data.foodz.fr/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin',
-		'X-Hasura-User-ID':req.body.hasura_userid},
+			headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+			json: {
+			  "type" : "select",
+			  "args" : {
+			    "table" : "tbl_user_facebook_friends",
+			    "columns": ["*.*"],
+			    "where":{
+			    	"fb_friend_name":obj.fb_friend_name,
+			    	"is_app_user": true
+			    }
+			  }
+			}
+		}, function(error, response, body){
+			if(error) {
+				console.log(error);
+			} else {
+				console.log(response.body);
+				console.log("It works")
+				// res.send(response.statusCode, body)
+			if (response.body = []) { 
+			request({
+			url: 'https://data.foodz.fr/v1/query',
+			method: 'POST',
+			headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
 			json: {
 			  "type" : "insert",
 			  "args" : {
@@ -39,14 +59,54 @@ module.exports = function(app){
 			    }]
 			  }
 			}
+			},
+			function(error, response, body){
+			if(error) {
+				console.log(error);
+			} else {
+				console.log(response.body);
+				console.log("It Passes")
+				// res.send(response.statusCode, body)
+			}
+			});
+			}
+			else{
+			request({
+			url: 'https://data.foodz.fr/v1/query',
+			method: 'POST',
+			headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+			json: {
+			  "type" : "update",
+			  "args" : {
+			    "table" : "tbl_user_facebook_friends",
+			    "returning": [
+						"friends_facebook_id",
+						"fb_friend_name",
+						"fb_profile_image_url",
+						"tbl_user_profileunique_id"
+					],
+					"$set": {
+					"friends_facebook_id":obj.friends_facebook_id,
+					"fb_friend_name":obj.fb_friend_name,
+					"fb_profile_image_url":obj.fb_profile_image_url
+				},
+				"where":{
+					"fb_friend_name":obj.fb_friend_name
+				}
+			  }
+			}
 		}, function(error, response, body){
 			if(error) {
 				console.log(error);
 			} else {
 				console.log(response.body);
+				console.log("It sucks")
 				// res.send(response.statusCode, body)
 			}
 		});
+		}
+		}
+        })
 	}
 	});
 };
