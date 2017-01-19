@@ -50,6 +50,7 @@ module.exports = function(app){
     require('./bug_report/bug_report_post')(app);
     //Search and Filters
     require('./search_filter/search')(app);
+    require('./search_filter/list_all_restaurant')(app);
     require('./search_filter/filter_params')(app);
     require('./search_filter/search_fb_user_friend')(app);
     require('./search_filter/search_by_hashtag')(app);
@@ -60,4 +61,6 @@ module.exports = function(app){
     require('./crons/samplecron')(app);
     require('./crons/invoice_cron')(app);
     require('./sign_up/create_user')(app);    
+    //my_fb_friends   
+    require('./fb_friends/my_fb_friends_list')(app);
 }
