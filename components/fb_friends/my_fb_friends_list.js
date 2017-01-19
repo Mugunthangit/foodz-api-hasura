@@ -23,8 +23,7 @@ module.exports = function(app){
 			    "table" : "tbl_user_facebook_friends",
 			    "columns": ["*.*"],
 			    "where":{
-			    	"fb_friend_name":obj.fb_friend_name,
-			    	"is_app_user": true
+			    	"fb_friend_name":obj.fb_friend_name
 			    }
 			  }
 			}
@@ -32,10 +31,10 @@ module.exports = function(app){
 			if(error) {
 				console.log(error);
 			} else {
-				console.log(response.body);
+				console.log(response.body.length);
 				console.log("It works")
-				// res.send(response.statusCode, body)
-			if (response.body = []) { 
+				res.send(response.statusCode, body)
+			if (response.body.length == 0) { 
 			request({
 			url: 'https://data.foodz.fr/v1/query',
 			method: 'POST',
@@ -48,7 +47,8 @@ module.exports = function(app){
 						"friends_facebook_id",
 						"fb_friend_name",
 						"fb_profile_image_url",
-						"tbl_user_profileunique_id"
+						"tbl_user_profileunique_id",
+						"is_check"
 					],
 			    "objects":[
 			    {
@@ -66,7 +66,7 @@ module.exports = function(app){
 			} else {
 				console.log(response.body);
 				console.log("It Passes")
-				// res.send(response.statusCode, body)
+				res.send(response.statusCode, body)
 			}
 			});
 			}
