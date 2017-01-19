@@ -6,9 +6,9 @@ var invoice_tax = require('./callbacks/invoice_tax');
 module.exports = function(app){
 	app.post("/create_invoice", function(req, res) {
 		request({
-			url: 'https://data.foodz.fr/v1/query',
+			url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','Authorization':'Bearer rnwrlvqj34rg4ok1b7m3ro5449ur8kwq'},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 			json: {
 				"type" : "select",
 				"args" : {
@@ -25,9 +25,9 @@ module.exports = function(app){
 					var currentdate = new Date();
 					previoudate.setDate(currentdate.getDate()-1);
 					request({
-						url: 'https://data.foodz.fr/v1/query',
+						url: 'http://data.hasura/v1/query',
 						method: 'POST',
-						headers: {'Content-Type':'application/json','Authorization':'Bearer rnwrlvqj34rg4ok1b7m3ro5449ur8kwq'},
+						headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 						json: {
 							"type" : "select",
 							"args" : {
@@ -52,9 +52,9 @@ module.exports = function(app){
                 var tax_amount = callback_obj.invoice_for_count*subs_body[0].ticket_cost*callback_obj.tax_percentage/100;
                 var invoice_total = invoice_amount+tax_amount;
 								request({
-									url: 'https://data.foodz.fr/v1/query',
+									url: 'http://data.hasura/v1/query',
 									method: 'POST',
-									headers: {'Content-Type':'application/json','Authorization':'Bearer rnwrlvqj34rg4ok1b7m3ro5449ur8kwq'},
+									headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 									json: {
 										"type" : "insert",
 										"args" : {

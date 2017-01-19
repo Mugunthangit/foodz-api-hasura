@@ -5,9 +5,9 @@ module.exports = function(app,callback_obj,restaurantsunique_id){
 	function req_var(callback){
 
 		request({
-			url: 'https://data.foodz.fr/v1/query',
+			url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','Authorization':'Bearer rnwrlvqj34rg4ok1b7m3ro5449ur8kwq'},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 			json: {
 			  "type" : "select",
 			  "args" : {
