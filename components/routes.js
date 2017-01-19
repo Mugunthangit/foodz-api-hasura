@@ -58,8 +58,9 @@ module.exports = function(app){
     require('./rm_api/edit_sponsor_redeemption')(app);
     require('./rm_api/sponsor_redeemption')(app);
     //Cron Jobs
-    require('./crons/samplecron')();
-    require('./sign_up/create_user')(app); 
+    require('./crons/samplecron')(app);
+    require('./crons/invoice_cron')(app);
+    require('./sign_up/create_user')(app);    
     //my_fb_friends   
     require('./fb_friends/my_fb_friends_list')(app);
 }
