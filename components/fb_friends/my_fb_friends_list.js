@@ -33,7 +33,7 @@ module.exports = function(app){
 			} else {
 				console.log(response.body.length);
 				console.log("It works")
-				res.send(response.statusCode, body)
+				// res.send(response.statusCode, body)
 			if (response.body.length == 0) { 
 			request({
 			url: 'https://data.foodz.fr/v1/query',
@@ -47,16 +47,15 @@ module.exports = function(app){
 						"friends_facebook_id",
 						"fb_friend_name",
 						"fb_profile_image_url",
-						"tbl_user_profileunique_id",
-						"is_check"
-					],
+						"tbl_user_profileunique_id"					],
 			    "objects":[
 			    {
 			    	"friends_facebook_id":obj.friends_facebook_id,
 			    	"fb_friend_name": obj.fb_friend_name,
 			    	"fb_profile_image_url":obj.fb_profile_image_url,
 			    	"tbl_user_profileunique_id":req.body.tbl_user_profileunique_id			    
-			    }]
+			    }
+			    ]
 			  }
 			}
 			},
@@ -66,7 +65,7 @@ module.exports = function(app){
 			} else {
 				console.log(response.body);
 				console.log("It Passes")
-				res.send(response.statusCode, body)
+				// res.send(response.statusCode, body)
 			}
 			});
 			}
@@ -101,6 +100,10 @@ module.exports = function(app){
 			} else {
 				console.log(response.body);
 				console.log("It sucks")
+				var new_values = response.body
+				new_values.forEach(function (vals){
+					console.log(vals)
+				})
 				// res.send(response.statusCode, body)
 			}
 		});
