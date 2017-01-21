@@ -45,6 +45,7 @@ module.exports = function(app){
     //Restaurant User Settings
     require('./user_settings/user_settings_insert')(app);
     require('./user_settings/user_settings_edit')(app);
+    require('./sign_up/create_user')(app);    
     //Restaurant Suggestions
     require('./suggest_restaurant/suggest_restaurant_insert')(app);
     //Mobiel App Bug Report
@@ -61,7 +62,7 @@ module.exports = function(app){
     //Cron Jobs
     require('./crons/samplecron')(app);
     require('./crons/invoice_cron')(app);
-    require('./sign_up/create_user')(app);    
+    require('./crons/restaurant_trend_ratio')(app);
     //my_fb_friends   
     require('./fb_friends/my_fb_friends_list')(app);
 }
