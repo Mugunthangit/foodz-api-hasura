@@ -1,14 +1,17 @@
 var request = require('request');
 var uuid = require('node-uuid');
+var ratio = require('./callbacks/ratio');
+var trend_ratio = require('./callbacks/trend_ratio');
+var trend_score = require('./callbacks/trend_score');
 require('dotenv').config()
 
 module.exports = function(app){
 	app.post("/restaurant_trend_ratio", function(req, res) {
 		console.log("restaurant_trend_ratio");
 		request({
-			url: 'https://data.foodz.fr/v1/query',
+			url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','Authorization':'Bearer rguevrq5m3j4amwxuojjnvtdqvav0nwc'},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 			json: {
 				"type" : "select",
 				"args" : {
@@ -24,16 +27,22 @@ module.exports = function(app){
 				console.log(error);
 			} else {
 				res_body.forEach( function (res_arrayItem){
-					request({
-						url: 'https://data.foodz.fr/v1/query',
+
+
+					ratio(res_arrayItem);
+					console.log("=================================================================");
+					setTimeout(function() {
+					  console.log(res_arrayItem);
+					  request({
+						url: 'http://data.hasura/v1/query',
 						method: 'POST',
-						headers: {'Content-Type':'application/json','Authorization':'Bearer rguevrq5m3j4amwxuojjnvtdqvav0nwc'},
+						headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 						json: {
 							"type" : "update",
 							"args" : {
 								"table" : "tbl_restaurants",
 								"returning" : ["id"],
-								"$set": {"ratio": 50,"trend_ratio": 100,"trend_score": 3},
+								"$set": {"ratio": res_arrayItem.ratio,"trend_ratio": 100,"trend_score": 3},
 								"where": {
 									"unique_id": res_arrayItem.unique_id
 								}
@@ -43,9 +52,14 @@ module.exports = function(app){
 						if(error) {
 							console.log(error);
 						} else {
-							console.log(res_arrayItem);
+							// console.log(res_arrayItem);
 						}
 					});
+					}, 3000);
+
+
+
+
 				});
 			}
 		});
