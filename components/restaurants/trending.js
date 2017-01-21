@@ -6,8 +6,8 @@ module.exports = function(app){
 		console.log(req.headers);
 		console.log(req.body);
 		var type = 'POST'
-		var url = 'https://data.foodz.fr/v1/query';
-		var head = {'Content-Type':'application/json','Authorization':'Bearer 1lf72x13y8qi3tyklgmjgv7fmqhfqvk6'}
+		var url = 'http://data.hasura/v1/query';
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid};
 		var body = {
 	  "type" : "select",
 	  "args" : {
@@ -18,6 +18,6 @@ module.exports = function(app){
 	    "payment_types","no_of_seats","max_group_limit",{"name": "restaurant_hashtag", "columns": ["hashtag","unique_id"]}]
 	  }
 	} 
-    require('.././https/trending_hasura_post')(req,res,type,url,head,body);
+    require('.././https/temp_hasura_post')(req,res,type,url,head,body);
 	});
 }

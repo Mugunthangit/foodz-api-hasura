@@ -4,9 +4,8 @@ var ratio = require('./callbacks/ratio');
 var trend_ratio = require('./callbacks/trend_ratio');
 var trend_score = require('./callbacks/trend_score');
 require('dotenv').config()
-
 module.exports = function(app){
-	app.post("/restaurant_trend_ratio", function(req, res) {
+	app.post("/restaurant_ratio", function(req, res) {
 		console.log("restaurant_trend_ratio");
 		request({
 			url: 'http://data.hasura/v1/query',
@@ -27,10 +26,7 @@ module.exports = function(app){
 				console.log(error);
 			} else {
 				res_body.forEach( function (res_arrayItem){
-
-
 					ratio(res_arrayItem);
-					console.log("=================================================================");
 					setTimeout(function() {
 					  console.log(res_arrayItem);
 					  request({
@@ -52,16 +48,14 @@ module.exports = function(app){
 						if(error) {
 							console.log(error);
 						} else {
-							// console.log(res_arrayItem);
+							console.log("Success");
 						}
 					});
 					}, 3000);
-
-
-
-
 				});
+				res.send("Success");
 			}
 		});
+
 	});
 }

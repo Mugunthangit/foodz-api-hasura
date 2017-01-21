@@ -1,6 +1,5 @@
 var request = require('request');
 require('dotenv').config()
-
 module.exports = function(res_arrayItem){
 	function req_var(callback){
 		request({
@@ -23,8 +22,6 @@ module.exports = function(res_arrayItem){
 			}
 		});
 	}
-
-
 var myCallback = function(ratio) {
   ratio_value_den = res_arrayItem.no_of_seats*14
   ratio_value = Math.round(ratio/ratio_value_den);
