@@ -15,6 +15,7 @@ module.exports = function(app){
 	require('./restaurants/recommended_to_me')(app);
     //Restaurant Sponsors
     require('./sponsor/restaurant')(app);
+    require('./sponsor/sponsor_msg_update')(app);
     //Restaurant Favourite
     require('./restaurants/favorite')(app);
     //Http Sample Response Service

@@ -16,7 +16,7 @@ module.exports = function(app){
 				"returning": ["id", "hasura_userid", "unique_id",
 				"first_name", "last_name", "middle_name", "personal_description",
 				"nickname", "company_name", "profile_picture", "facebook_profile",
-				"facebook_access_token", "email", "alt_email", "telephone", "alt_telephone",
+				"fb_friend_name", "email", "alt_email", "telephone", "alt_telephone",
 				"country_code", "mobile_no", "address", "city", "state", "country",
 				"pincode", "tbl_master_profile_statusunique_id"],
 				"$set": {
@@ -25,7 +25,7 @@ module.exports = function(app){
 					"nickname": req.body.nickname,
 					"company_name": req.body.company_name,
 					"email": req.body.email,
-					"facebook_access_token": req.body.facebook_access_token,
+					"fb_friend_name": req.body.fb_friend_name,
 					"alt_email": req.body.alt_email,
 					"telephone": req.body.telephone,
 					"alt_telephone": req.body.alt_telephone,
