@@ -62,7 +62,9 @@ module.exports = function(app){
     //Cron Jobs
     require('./crons/samplecron')(app);
     require('./crons/invoice_cron')(app);
-    require('./crons/restaurant_trend_ratio')(app);
+    require('./crons/restaurant_ratio')(app);
+    require('./crons/restaurant_trending_ratio')(app);
+
     //my_fb_friends   
     require('./fb_friends/my_fb_friends_list')(app);
 }
