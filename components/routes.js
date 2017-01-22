@@ -15,6 +15,7 @@ module.exports = function(app){
 	require('./restaurants/recommended_to_me')(app);
     //Restaurant Sponsors
     require('./sponsor/restaurant')(app);
+    require('./sponsor/sponsor_msg_update')(app);
     //Restaurant Favourite
     require('./restaurants/favorite')(app);
     //Http Sample Response Service
@@ -38,6 +39,7 @@ module.exports = function(app){
     //Restaurant Menu
     require('./restaurants/restaurant_menu')(app);
     require('./restaurants/restaurant_menu_list')(app);
+    require('./restaurants/delete_res_menu_category')(app);
     //Restaurant News
     require('./restaurant_news/rest_news')(app);
     require('./restaurant_news/lookup')(app);

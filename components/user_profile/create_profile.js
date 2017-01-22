@@ -18,7 +18,7 @@ module.exports = function(app){
 				"returning": ["id", "hasura_userid", "unique_id",
 				 "first_name", "last_name", "middle_name", "personal_description",
 				 "nickname", "company_name", "profile_picture", "facebook_profile",
-				 "facebook_access_token", "email", "alt_email", "telephone", "alt_telephone",
+				 "fb_friend_name", "email", "alt_email", "telephone", "alt_telephone",
 				 "country_code", "mobile_no", "address", "city", "state", "country",
 				 "pincode", "tbl_master_profile_statusunique_id"],
 				"objects": [
@@ -26,6 +26,7 @@ module.exports = function(app){
 					"hasura_userid" : req.body.hasura_userid, 
 					"unique_id": uuid.v1(),
 					"first_name":req.body.first_name,
+					"nickname":req.body.nickname,
 					"last_name": req.body.last_name,
 					"profile_picture":req.body.profile_picture,
 					"facebook_profile":req.body.facebook_profile,

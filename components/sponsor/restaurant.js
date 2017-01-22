@@ -24,6 +24,7 @@ module.exports = function(app){
 				"tbl_user_profileunique_id": req.body.tbl_user_profileunique_id,
 				"tbl_user_profileunique_id2": req.body.tbl_user_profileunique_id2,
 				"sponsored_user_facebook_id": req.body.sponsored_user_facebook_id,
+				"hashtag_used":req.body.hashtag_used,
 				"tbl_restaurantsunique_id": req.body.tbl_restaurantsunique_id,
                 "no_of_dinein": req.body.no_of_dinein,
                 "shared_message": req.body.shared_message,
