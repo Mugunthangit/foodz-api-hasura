@@ -61,7 +61,7 @@ module.exports = function(app){
     require('./rm_api/edit_sponsor_redeemption')(app);
     require('./rm_api/sponsor_redeemption')(app);
     //Cron Jobs
-    require('./crons/samplecron')(app);
+    // require('./crons/samplecron')(app);
     require('./crons/invoice_cron')(app);
     require('./crons/restaurant_ratio')(app);
     require('./crons/restaurant_trending_ratio')(app);
