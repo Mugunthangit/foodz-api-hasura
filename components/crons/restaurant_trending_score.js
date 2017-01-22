@@ -3,6 +3,8 @@ var uuid = require('node-uuid');
 var ratio = require('./callbacks/ratio');
 var trend_ratio = require('./callbacks/trend_ratio');
 var trend_score = require('./callbacks/trend_score');
+var schedule = require('node-schedule');
+
 require('dotenv').config()
 module.exports = function(app){
 	schedule.scheduleJob('* * * *', function(){

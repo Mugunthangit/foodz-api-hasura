@@ -55,7 +55,6 @@ module.exports = function(app){
 					});
 					}, 3000);
 				});
-				res.send("Success");
 			}
 		});
 
