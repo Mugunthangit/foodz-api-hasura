@@ -63,7 +63,7 @@ module.exports = function(app){
     require('./crons/invoice_cron')(app);
     require('./crons/restaurant_ratio')(app);
     require('./crons/restaurant_trending_ratio')(app);
-
+    require('./crons/restaurant_trending_score')(app);
     //my_fb_friends   
     require('./fb_friends/my_fb_friends_list')(app);
 }
