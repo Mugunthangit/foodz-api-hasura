@@ -8,7 +8,7 @@ var schedule = require('node-schedule');
 require('dotenv').config()
 module.exports = function(app){
 	schedule.scheduleJob('* * * *', function(){
-		console.log("restaurant_trend_ratio");
+		console.log("restaurant_trending_score");
 		request({
 			url: 'http://data.hasura/v1/query',
 			method: 'POST',
@@ -27,34 +27,66 @@ module.exports = function(app){
 			if(error) {
 				console.log(error);
 			} else {
-				res_body.forEach( function (res_arrayItem){
-					ratio(res_arrayItem);
-					setTimeout(function() {
-					  console.log(res_arrayItem);
-					  request({
+        console.log(res_body)
+
+        res_body.forEach( function (res_arrayItem){
+
+
+
+
+
+					request({
 						url: 'http://data.hasura/v1/query',
 						method: 'POST',
 						headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 						json: {
-							"type" : "update",
-							"args" : {
-								"table" : "tbl_restaurants",
-								"returning" : ["id"],
-								"$set": {"ratio": res_arrayItem.ratio,"trend_ratio": 100,"trend_score": 3},
-								"where": {
-									"unique_id": res_arrayItem.unique_id
-								}
-							}
+						  "type" : "select",
+						  "args" : {
+						    "table" : "tbl_master_trendscore_calculator",
+						    "columns": ["*"],
+						    "where": { "range_start": { "$gte": res_arrayItem.trend_ratio },"range_end": { "$lte": res_arrayItem.trend_ratio } }
+
+						  }
 						}
-					}, function(error, response, body){
+					}, function(error, response, res_score_body){
 						if(error) {
 							console.log(error);
 						} else {
-							console.log("Success");
-						}
+								request({
+									url: 'http://data.hasura/v1/query',
+									method: 'POST',
+									headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
+									json: {
+									  "type" : "update",
+									  "args" : {
+									    "table" : "tbl_restaurants",
+									    "$set": {"trend_score": res_score_body[0].id},
+									    "where": {
+									        "unique_id": res_arrayItem.unique_id
+									    }
+									  }
+									}
+								}, function(error, response, body){
+									if(error) {
+										console.log(error);
+									} else {
+										console.log(response.statusCode, body);
+									}
+								});				
+							}
 					});
-					}, 3000);
-				});
+
+
+
+
+
+
+
+  			});
+
+
+
+				res.send("Success");
 			}
 		});
 
