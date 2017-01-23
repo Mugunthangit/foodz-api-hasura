@@ -13,7 +13,9 @@ module.exports = function(app){
 		  "type" : "select",
 		  "args" : {
 		    "table" : "tbl_restaurant_menu",
-		    "columns": ["*.*"]
+		    "columns": ["*.*"],
+		    		    "where": {"tbl_restaurantsunique_id": req.body.tbl_restaurantsunique_id}
+
 		  }
 		}
 	}, function(error, response, body){

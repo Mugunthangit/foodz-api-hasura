@@ -10,7 +10,7 @@ module.exports = function(){
 			url: 'http://data.hasura/v1/query',
 			method: 'POST',
 			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin',
-			'X-Hasura-User-ID':req.body.hasura_userid},
+			'X-Hasura-User-ID':1},
 			json: {
 				"type" : "select",
 				"args" : {
@@ -35,7 +35,7 @@ module.exports = function(){
 				url: 'http://data.hasura/v1/query',
 				method: 'POST',
 				headers: {'Content-Type':'application/json','X-Hasura-Role':'admin',
-				'X-Hasura-User-ID':req.body.hasura_userid},
+				'X-Hasura-User-ID':1},
 				json: {
 					"type" : "select",
 					"args" : {
@@ -65,7 +65,7 @@ module.exports = function(){
 							url: 'http://data.hasura/v1/query',
 							method: 'POST',
 							headers: {'Content-Type':'application/json','X-Hasura-Role':'admin',
-							'X-Hasura-User-ID':req.body.hasura_userid},
+							'X-Hasura-User-ID':1},
 							json: {
 								"type" : "update",
 								"args" : {
