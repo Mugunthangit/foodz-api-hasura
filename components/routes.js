@@ -68,4 +68,7 @@ module.exports = function(app){
     require('./crons/restaurant_trending_score')(app);
     //my_fb_friends   
     require('./fb_friends/my_fb_friends_list')(app);
+    //master_get
+    require('./master_get/master_trendscore_calculator')(app);
+
 }
