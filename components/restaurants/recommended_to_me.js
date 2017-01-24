@@ -7,7 +7,7 @@ module.exports = function(app){
 		console.log(req.body);
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id}
 		var body = {
 		  "type" : "select",
 		  "args" : {
@@ -15,7 +15,10 @@ module.exports = function(app){
 		    "columns": ["id","unique_id","restaurant_name","description",
 		    "banner_image","avg_cost",
 		    "city","geolocation_lat","geolocation_long","mobile","alt_mobile","email","website",
-		    "payment_types","no_of_seats","max_group_limit",{"name": "restaurant_hashtag", "columns": ["hashtag","unique_id"]}]
+		    "payment_types","no_of_seats","max_group_limit",{"name": "restaurant_hashtag", "columns": ["hashtag","unique_id"]}],
+		    "where": {
+      				"restaurant_sponsor": {"tbl_user_profileunique_id2":  req.body.tbl_user_profileunique_id2 } 
+				}
 		  }
 		} 
     require('.././https/temp_hasura_post')(req,res,type,url,head,body);

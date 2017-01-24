@@ -3,7 +3,7 @@ var myParser = require("body-parser");
 require('dotenv').config()
 
 module.exports = function(app){
-    app.post("/restaurant_menu_category", function(req, res) {
+    app.post("/delete_restaurant_menu", function(req, res) {
 	request({
 		url: 'http://data.hasura/v1/query',
 		method: 'POST',
