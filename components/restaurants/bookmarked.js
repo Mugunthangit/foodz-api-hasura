@@ -14,7 +14,7 @@ module.exports = function(app){
 		    "table" : "tbl_restaurants",
 		    "columns": ["id","unique_id","restaurant_name","description",
 		    "banner_image","avg_cost",
-		    "city","geolocation_lat","geolocation_long","mobile","alt_mobile","email","website",
+		    "city","geolocation_lat","geolocation_long","mobile","alt_mobile","email","website","restaurant_trendscore",
 		    "payment_types","no_of_seats","max_group_limit",{"name": "restaurant_hashtag", "columns": ["hashtag","unique_id"]}]
 		  }
 		} 
