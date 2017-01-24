@@ -8,7 +8,8 @@ module.exports = function(app){
 		console.log(req.body);
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id}
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',
+		'X-Hasura-User-ID':req.body.hasura_userid};
 		var body = {
 			"type" : "select",
 			"args" : 
@@ -20,7 +21,7 @@ module.exports = function(app){
 				"city","geolocation_lat","geolocation_long","mobile","alt_mobile","email","website",
 				"payment_types","no_of_seats","max_group_limit",{"name": "restaurant_hashtag", "columns": ["hashtag","unique_id"]}],
 				 "where": {
-      				"restaurant_sponsor": {"tbl_user_profileunique_id":  req.body.tbl_user_profileunique_id } 
+      				"restaurant_sponsor": {"tbl_user_profileunique_id":  req.body.unique_id } 
 				}
 			}
 		} 
