@@ -31,10 +31,10 @@ module.exports = function(req,res,type,url,head,body){
                 	hash_tag_array.forEach(function (arrayItem) {
 	            		// var restaurant_id_array = [];
 		                request({
-							url: 'https://data.oologic14.hasura-app.io/v1/query',
+							url: 'http://data.hasura/v1/query',
 							method: 'POST',
 							headers: {'Content-Type':'application/json','Authorization': 
-									'Bearer 0u1bwfbp6uxbjn6fhmthg32kp54of2te'},
+									'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
 							json: {
 							  "type" : "select",
 							  "args" : {

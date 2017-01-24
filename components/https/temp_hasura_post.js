@@ -23,15 +23,15 @@ module.exports = function(req,res,type,url,head,body){
 			var user_unique_id = req.body.unique_id;
 			var hasura_user_id = req.body.hasura_userid;
 			localStorage.setItem("user_unique_id", user_unique_id);
-			localStorage.setItem("hasura_user_id", hasura_user_id);
+			// localStorage.setItem("hasura_user_id", hasura_user_id);
 			injected_response_data.forEach( function (arrayItem)
 			{
 
 				var x = arrayItem
 				var restaurant_unique_id = x.unique_id;
 				var user_unique_id = localStorage.getItem('user_unique_id');
-				var hasura_user_id = localStorage.getItem('hasura_user_id');
-				bookmark_value(restaurant_unique_id,x,user_unique_id,hasura_user_id);
+				// var hasura_user_id = localStorage.getItem('hasura_user_id');
+				bookmark_value(restaurant_unique_id,x,user_unique_id);
 				x['food_type'] = 'chinese';
 				x['food_discount'] = '10%';
 				x['is_sponsered'] = false;
