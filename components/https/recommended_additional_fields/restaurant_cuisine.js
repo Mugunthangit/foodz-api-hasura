@@ -1,12 +1,12 @@
 var request = require('request');
 require('dotenv').config()
 
-module.exports = function(x,restaurantsunique_id){
+module.exports = function(x,restaurantsunique_id,hasura_user_id){
 	function req_var(callback){
 		request({
         	url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id},
 			json: {
 			  "type" : "select",
 			  "args" : {
@@ -28,7 +28,7 @@ module.exports = function(x,restaurantsunique_id){
 					{
 						url: 'http://data.hasura/v1/query',
 						method: 'POST',
-						headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
+						headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id},
 						json: 
 						{
 							"type" : "select",
