@@ -7,9 +7,9 @@ require('dotenv').config()
 module.exports = function(){
 	schedule.scheduleJob('2 * * * * *', function(){
 		request({
-			url: 'https://data.foodz.fr/v1/query',
+			url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 			json: {
 				"type" : "select",
 				"args" : {
@@ -30,9 +30,9 @@ module.exports = function(){
 				var get_user_id = check_user_id.fb_friend_name;
 				
 				request({
-				url: 'https://data.foodz.fr/v1/query',
+				url: 'http://data.hasura/v1/query',
 				method: 'POST',
-				headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+				headers:  {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 				json: {
 					"type" : "select",
 					"args" : {
@@ -58,9 +58,9 @@ module.exports = function(){
 							var fb_unique_id = change_value.unique_id
 							// console.log("It Passes")
 							request({
-							url: 'https://data.foodz.fr/v1/query',
+							url: 'http://data.hasura/v1/query',
 							method: 'POST',
-							headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+							headers:  {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 							json: {
 								"type" : "update",
 								"args" : {

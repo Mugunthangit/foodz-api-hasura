@@ -9,9 +9,9 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 
 module.exports = function(restaurant_unique_id,x,user_unique_id,hasura_user_id){
 function req_var(callback){
-request({url: 'https://data.oologic14.hasura-app.io/v1/query/tbl_restaurant_news?unique_id='+user_unique_id,
+request({url: 'http://data.hasura/v1/query/tbl_restaurant_news?unique_id='+user_unique_id,
 	method: 'GET',
-	headers: {'Content-Type':'application/json','Authorization': 'Bearer 0u1bwfbp6uxbjn6fhmthg32kp54of2te'},
+	headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 }, function(error, response, body){
 	if(error) {
 		console.log(error);
