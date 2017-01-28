@@ -41,7 +41,7 @@ module.exports = function(){
 					"args" : {
 						"table" : "tbl_user_profile",
 						"columns": ["fb_friend_name","facebook_profile", "unique_id"],
-						"where": { "facebook_profile": get_user_id}
+						"where": { "fb_friend_name": get_user_id}
 						}
 					  }
 				},

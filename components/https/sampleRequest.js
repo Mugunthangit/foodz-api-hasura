@@ -6,7 +6,7 @@ module.exports = function(app){
 	console.log("=====================++++++++++++++++++++++===");
 	console.log(req)
 	request({
-		url: 'https://data.oologic14.hasura-app.io/v1/query',
+		url: 'https://data.foodz.fr/v1/query',
 		method: 'POST',
 		headers: {'Content-Type':'application/json','Authorization': 'Bearer 0u1bwfbp6uxbjn6fhmthg32kp54of2te'},
 		json: {

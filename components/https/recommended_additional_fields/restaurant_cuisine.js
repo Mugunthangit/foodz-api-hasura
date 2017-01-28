@@ -1,7 +1,7 @@
 var request = require('request');
 require('dotenv').config()
 
-module.exports = function(app,callback_obj,restaurantsunique_id){
+module.exports = function(x,restaurantsunique_id){
 	function req_var(callback){
 		request({
         	url: 'https://data.foodz.fr/v1/query',
@@ -48,17 +48,18 @@ module.exports = function(app,callback_obj,restaurantsunique_id){
 						} 
 						else 
 						{
-							console.log(body)
-				  			callback(body)
+							console.log(body[0].cuisine_name)
+							callback(body[0].cuisine_name)
+				  			
 						}
 					});
 				})
 			}
 	});
 }
+
 var myCallback = function(cuisine_values_obj) {
-	callback_obj['cuisine_name'] = cuisine_values_obj;
-	console.log(cuisine_values_obj)
+	x['food_type'] = cuisine_values_obj;
 	return cuisine_values_obj
 };
 req_var(myCallback);

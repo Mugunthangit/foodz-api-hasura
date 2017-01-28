@@ -10,14 +10,14 @@ module.exports = function(app){
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
-		var body = {
-		  "type" : "select",
-		  "args" : {
-		    "table" : "tbl_user_profile",
-		    "columns": ["*.*"],
-		     "where":{"hasura_userid": req.body.hasura_userid}
-		  }
-		} 
+			var body = {
+			  "type" : "select",
+			  "args" : {
+			    "table" : "tbl_user_profile",
+			    "columns": ["*.*"],
+			     "where":{"hasura_userid": req.body.hasura_userid}
+			  }
+			} 
     require('.././https/hasura_post')(req,res,type,url,head,body);
 	});
 }

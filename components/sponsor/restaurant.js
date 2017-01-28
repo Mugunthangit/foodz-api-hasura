@@ -16,7 +16,7 @@ module.exports = function(app){
 			"type" : "insert",
 			"args" : {
 				"table" : "tbl_restaurant_sponsors",
-				"returning": ["id","unique_id","ticket_code","tbl_restaurantsunique_id","expired_time"],
+				"returning": ["id","unique_id","ticket_code","tbl_restaurantsunique_id","expired_time","sponsor_name"],
 				"objects": [
 				{"hasura_userid": req.body.hasura_userid,
 				"unique_id": uuid.v1(),
@@ -29,7 +29,8 @@ module.exports = function(app){
                 "no_of_dinein": req.body.no_of_dinein,
                 "shared_message": req.body.shared_message,
                 "tbl_master_share_typeunique_id": req.body.tbl_master_share_typeunique_id,
-                "tbl_master_ticket_statusunique_id": 'TICKET001'}
+                "tbl_master_ticket_statusunique_id": 'TICKET001',
+                "sponsor_name": req.body.sponsor_name}
 				]
 			}
 		} 

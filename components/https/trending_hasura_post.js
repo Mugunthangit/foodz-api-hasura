@@ -44,6 +44,8 @@ module.exports = function(req,res,type,url,head,body){
 			var hasura_user_id = req.body.hasura_userid;
 			localStorage.setItem("user_unique_id", user_unique_id);
 			localStorage.setItem("hasura_user_id", hasura_user_id);
+			var injected_response_data_length = body.length;
+			if (injected_response_data_length != 0) {
 			injected_response_data.forEach( function (arrayItem)
 			{
 
@@ -66,7 +68,7 @@ module.exports = function(req,res,type,url,head,body){
 				x['food_type'] = 'chinese';
 				x['food_discount'] = '10%';
 				x['is_sponsered'] = false;
-				x['restaurant_trendscore'] = 'high';
+				x['restaurant_trendscore'] = 3;
 				x['trend_image_url'] = 'http://citizenactionny.org/wp-content/uploads/2013/05/cup-of-coffee.jpg';
 				x['restaurant_image'] = [{"unique_id":"123","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"},
 				{"unique_id":"1234","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"},
@@ -79,6 +81,7 @@ module.exports = function(req,res,type,url,head,body){
 				{"unique_id":"145551151823","nickname":"mockusername","users_hash_tag_csv":"#sushi, #veg","facebook_id":"1","img_url":"http://media.tumblr.com/tumblr_m0rwptJAEz1qm0omn.jpg"}
 				];
 			});
+		}	
 			// console.log(injected_response_data)
   			setTimeout(function() {
 				    res.send(response.statusCode,injected_response_data);

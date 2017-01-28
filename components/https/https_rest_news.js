@@ -84,7 +84,7 @@ module.exports = function(req,res,type,url,head,body){
 					});
 				});
             	var data = arrays_value(response,body);
-					 					console.log(data)
+				console.log(data)
 			});
 		};
 	});

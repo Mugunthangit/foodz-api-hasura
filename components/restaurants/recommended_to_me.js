@@ -14,8 +14,7 @@ module.exports = function(app){
 		  "args" : {
 		    "table" : "tbl_restaurants",
 		    "columns": ["id","unique_id","restaurant_name","description",
-		    "banner_image","avg_cost","city","geolocation_lat","geolocation_long","mobile","alt_mobile","email","website",
-		    "restaurant_trendscore",
+		    "banner_image","avg_cost","city","geolocation_lat","geolocation_long","mobile","alt_mobile","email","website","trend_score",
 		    "payment_types","no_of_seats","max_group_limit",{"name": "restaurant_hashtag", "columns": ["hashtag","unique_id"]}],
 		    "where": {
       				"restaurant_sponsor": {"tbl_user_profileunique_id2":  req.body.unique_id } 

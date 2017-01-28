@@ -1,6 +1,6 @@
 var request = require('request');
 var myParser = require("body-parser");
-var restaurant_sponsors = require('./fb_friends_restaurant_sponsors');
+// var restaurant_sponsors = require('./fb_friends_restaurant_sponsors');
 
 module.exports = function(app){
 	app.post("/my_fb_friends", function(req, res){ 

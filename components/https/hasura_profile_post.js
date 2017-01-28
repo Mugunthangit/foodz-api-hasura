@@ -13,10 +13,11 @@ module.exports = function(req,res,type,url,head,body){
 		if(error) {
 			console.log(error);
 		} else {
+			console.log(profile_body.returning[0].hasura_userid)
 			request({
 				method: 'POST',
 				url: 'http://data.hasura/v1/query',
-				headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':profile_body.returning[0].hasura_userid},
+				headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid},
 				json: {
 					"type" : "insert",
 					"args" : {
@@ -48,10 +49,32 @@ module.exports = function(req,res,type,url,head,body){
 				} else {
 					console.log(response.statusCode, body);
 					console.log(body)
+						request({
+						method: 'POST',
+						url: 'http://data.hasura/v1/query',
+						headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid},						json: {
+							  "type" : "select",
+							  "args" : {
+							    "table" : "tbl_user_profile",
+							    "columns": ["*.*"],
+							     "where":{"unique_id": profile_body.returning[0].unique_id}
+							  }
+							} 
+						}, function(error, response, body){
+							if(error) {
+								console.log(error);
+							} else {
+								console.log(response.statusCode, body);
+								res.send(response.statusCode, body)
+							}
+						});
+											
 				}
 
 			});
-			res.send(response.statusCode, profile_body)
 		};
 	});
 }
+
+
+
