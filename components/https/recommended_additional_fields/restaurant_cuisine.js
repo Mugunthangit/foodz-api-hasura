@@ -62,5 +62,6 @@ var myCallback = function(cuisine_values_obj) {
 	x['food_type'] = cuisine_values_obj;
 	return cuisine_values_obj
 };
+
 req_var(myCallback);
 }
