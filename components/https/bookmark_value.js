@@ -9,7 +9,7 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 
 module.exports = function(restaurant_unique_id,x,user_unique_id,hasura_user_id){
 function req_var(callback){
-request({url: 'https://data.foodz.fr/v1/query/tbl_user_favorite_list?tbl_user_profileunique_id='+user_unique_id,
+request({url: 'https://data.foodz.fr/v1/template/tbl_user_favorite_list?tbl_user_profileunique_id='+user_unique_id,
 	method: 'GET',
 	headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'}
 }, function(error, response, body){
@@ -17,7 +17,9 @@ request({url: 'https://data.foodz.fr/v1/query/tbl_user_favorite_list?tbl_user_pr
 		console.log(error);
 	} else {
 		var restaurant_list_res = JSON.parse(body);
+		console.log(restaurant_list_res)
 		var new_array = [];
+		if (restaurant_list_res.length != 0){
 		restaurant_list_res.forEach( function (arrayItem){
 			new_array.push(arrayItem.tbl_restaurantsunique_id)
 		});
@@ -27,6 +29,7 @@ request({url: 'https://data.foodz.fr/v1/query/tbl_user_favorite_list?tbl_user_pr
     	var bookmarked_condition = isInArray(restaurant_unique_id,new_array);
 		// var bookmarked_condition = new_array.includes(restaurant_unique_id);
 		callback(bookmarked_condition)
+	}
 	}
 });	
 }
