@@ -17,7 +17,7 @@ module.exports = function(x,restaurantsunique_id){
 		request({
 			url: 'https://data.foodz.fr/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 			json: {
 				"type" : "select",
 				"args" : {

@@ -1,12 +1,12 @@
 var request = require('request');
 require('dotenv').config()
 
-module.exports = function(x,restaurantsunique_id){
+module.exports = function(x,restaurantsunique_id,hasura_user_id){
 	function req_var(callback){
 		request({
-        	url: 'https://data.foodz.fr/v1/query',
+        	url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id},
 			json: {
 			  "type" : "select",
 			  "args" : {
@@ -25,9 +25,9 @@ module.exports = function(x,restaurantsunique_id){
 					var rest_cuisine = cuisine_values.tbl_master_cuisineunique_id
 					request(
 					{
-						url: 'https://data.foodz.fr/v1/query',
+						url: 'http://data.hasura/v1/query',
 						method: 'POST',
-						headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+						headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id},
 						json: 
 						{
 							"type" : "select",

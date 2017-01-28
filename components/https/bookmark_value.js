@@ -9,9 +9,9 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 
 module.exports = function(restaurant_unique_id,x,user_unique_id,hasura_user_id){
 function req_var(callback){
-request({url: 'https://data.foodz.fr/v1/query/tbl_user_favorite_list?tbl_user_profileunique_id='+user_unique_id,
+request({url: 'http://data.hasura/v1/template/tbl_user_favorite_list?tbl_user_profileunique_id='+user_unique_id,
 	method: 'GET',
-	headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'}
+	headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id}
 }, function(error, response, body){
 	if(error) {
 		console.log(error);
