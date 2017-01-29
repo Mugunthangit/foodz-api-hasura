@@ -5,6 +5,8 @@ var bookmark_value = require('./bookmark_value');
 var cuisine_name = require('./recommended_additional_fields/restaurant_cuisine');
 var count_checking = require('./recommended_additional_fields/count_checking')
 var recommend_friends = require('./recommended_additional_fields/recommended_friends')
+var food_discount = require('./recommended_additional_fields/food_discount')
+var ticket_sponsor = require('./recommended_additional_fields/ticket_sponsored')
 
 
 
@@ -29,8 +31,6 @@ module.exports = function(req,res,type,url,head,body){
 			var injected_response_data = body;
 			var user_unique_id = req.body.unique_id;
 			var hasura_user_id = req.body.hasura_userid;
-			console.log(user_unique_id)
-			console.log(hasura_user_id)
 			localStorage.setItem("user_unique_id", user_unique_id);
 			localStorage.setItem("hasura_user_id", hasura_user_id);
 			console.log(body)
@@ -46,8 +46,8 @@ module.exports = function(req,res,type,url,head,body){
 				cuisine_name(x,restaurant_unique_id,hasura_user_id);
 				count_checking(x,restaurant_unique_id,user_unique_id,hasura_user_id)
 				recommend_friends(x,restaurant_unique_id,user_unique_id,hasura_user_id)
-				x['food_discount'] = '10%';
-				x['is_sponsered'] = false;
+				food_discount(x,restaurant_unique_id,hasura_user_id)
+				ticket_sponsor(x,restaurant_unique_id,user_unique_id,hasura_user_id)
 				x['restaurant_trendscore'] = arrayItem.trend_score;
 				x['restaurant_image'] = arrayItem.banner_image
 			});

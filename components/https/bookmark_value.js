@@ -32,7 +32,6 @@ request({url: 'http://data.hasura/v1/template/tbl_user_favorite_list?tbl_user_pr
 }
 
 var myCallback = function(data) {
-	console.log('got data: '+data);
 	x['is_bookmarked'] = data;
 };
 req_var(myCallback);

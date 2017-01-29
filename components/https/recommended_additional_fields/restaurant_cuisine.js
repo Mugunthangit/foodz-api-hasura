@@ -23,7 +23,6 @@ module.exports = function(x,restaurantsunique_id,hasura_user_id){
 				body.forEach(function (cuisine_values)
 				{
 					var rest_cuisine = cuisine_values.tbl_master_cuisineunique_id
-					console.log(rest_cuisine)
 					request(
 					{
 						url: 'http://data.hasura/v1/query',
@@ -48,7 +47,6 @@ module.exports = function(x,restaurantsunique_id,hasura_user_id){
 						} 
 						else 
 						{
-							console.log(body[0].cuisine_name)
 							callback(body[0].cuisine_name)
 				  			
 						}

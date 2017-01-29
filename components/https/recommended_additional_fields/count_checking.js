@@ -22,7 +22,6 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 				console.log(error);
 			} else 
 			{
-				console.log("first_loop")
 				var count = body.length
 				request({
 	        	url: 'http://data.hasura/v1/query',
@@ -43,14 +42,10 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 				} else 
 				{
 					var conv_count = body.length
-					console.log(conv_count, count)
-					console.log("second_loop")
 					if (count >= conv_count){
-						console.log("Use Bonus Value")
 						callback(true)
 					}
 					else {
-						console.log('Use Ticket Value')
 						callback(false)
 					}
 				}

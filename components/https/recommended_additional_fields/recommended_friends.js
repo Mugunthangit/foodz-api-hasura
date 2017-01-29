@@ -24,7 +24,6 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 			{
 				var array_list = []
 				body.forEach(function(new_values){
-					console.log(new_values.friends_tbl_user_profileunique_id2)
 					if (new_values.friends_tbl_user_profileunique_id2 != null){
 						array_list.push(new_values.friends_tbl_user_profileunique_id2)
 					}
@@ -52,17 +51,15 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 						console.log(error);
 					} else 
 					{
-						console.log("======================================")
-						console.log(sponsorreponse)
 						var sponsored_array = []
+
 						sponsorreponse.forEach(function(sponsor_user_data){
 							console.log(sponsor_user_data.tbl_user_profileunique_id)
 							if (sponsor_user_data.tbl_user_profileunique_id != null){
 								sponsored_array.push(sponsor_user_data.tbl_user_profileunique_id)
 							}
 
-						})		
-						
+						})
 							request({
 				        	url: 'http://data.hasura/v1/query',
 							method: 'POST',
@@ -83,14 +80,10 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 								console.log(error);
 							} else 
 							{
-								console.log("======================================")
 								callback(user_response_body)
 					
 							}
-						});
-
-						// callback(sponsorreponse)
-			
+						});			
 					}
 				});
 		}
