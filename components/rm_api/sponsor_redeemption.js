@@ -15,7 +15,7 @@ module.exports = function(app){
           "table" : "tbl_restaurant_sponsors",
           "columns": ["*.*"],
         "where": {
-            "ticket_code": req.body.ticket_code,"tbl_restaurantsunique_id": req.body.restaurantsunique_id
+            "ticket_code": req.body.ticket_code,"tbl_restaurantsunique_id": req.body.restaurantsunique_id, "tbl_master_ticket_statusunique_id": "TICKET001"
         }
       }
     }
