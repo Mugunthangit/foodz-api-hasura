@@ -1,7 +1,7 @@
 var request = require('request');
 require('dotenv').config()
 
-module.exports = function(x,restaurantsunique_id){
+module.exports = function(x,restaurantsunique_id,hasura_user_id){
 	function req_var(callback){
 		var weekday=new Array(7);
 		weekday[0]="sunday";
@@ -15,9 +15,9 @@ module.exports = function(x,restaurantsunique_id){
 		console.log("Today is " + weekday[d.getDay()]);
 		var today_name_value = d.getDay();
 		request({
-			url: 'https://data.foodz.fr/v1/query',
+			url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id },
 			json: {
 				"type" : "select",
 				"args" : {
