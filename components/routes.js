@@ -43,7 +43,6 @@ module.exports = function(app){
     require('./restaurants/delete_res_menu_category')(app);
     //Restaurant News
     require('./restaurant_news/rest_news')(app);
-    require('./restaurant_news/lookup')(app);
     //Restaurant User Settings
     require('./user_settings/user_settings_insert')(app);
     require('./user_settings/user_settings_edit')(app);
