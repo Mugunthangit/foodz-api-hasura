@@ -1,12 +1,20 @@
 var request = require('request');
 var myParser = require("body-parser");
+var uuid = require('node-uuid');
+var fs = require("fs");
+var uuid = require('node-uuid');
+
+
 require('dotenv').config()
 module.exports = function(app){
 	app.post("/edit_profile", function(req, res) {
+		var uuid_value = uuid.v1()
+		var encoded = req.body.profile_base64
+ 		fs.writeFile("./uploads/profile/"+uuid_value+".jpg", new Buffer(encoded, "base64"), function(err) {});
+		profile_image = "https://api.foodz.fr/profile/"+uuid_value+".jpg"
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',
-		'X-Hasura-User-ID':req.body.hasura_userid}
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
 		var body = {
 			"type" : "update",
 			"args" : {
@@ -35,7 +43,7 @@ module.exports = function(app){
 					"pincode": req.body.pincode,
 					"tbl_master_profile_statusunique_id": req.body.tbl_master_profile_statusunique_id,
 					"city": req.body.city,
-					"profile_picture":req.body.profile_picture,
+					"profile_picture": profile_image,
 					"facebook_profile":req.body.facebook_profile,
 					"personal_description":req.body.personal_description,
 
