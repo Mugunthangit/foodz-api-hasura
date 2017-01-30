@@ -20,6 +20,6 @@ module.exports = function(req,res,app){
 			    }
 			  }
 			}
-    require('.././https/hasura_post')(req,res,type,url,head,body);
+    require('./hasura_post')(req,res,type,url,head,body);
 	});	
 }

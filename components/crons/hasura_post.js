@@ -2,7 +2,8 @@ var request = require('request');
 require('dotenv').config()
 
 module.exports = function(req,res,type,url,head,body){
-	console.log("i============================")
+	console.log("+++++++");
+
 	request({
 		url: url,
 		method: type,
@@ -12,7 +13,7 @@ module.exports = function(req,res,type,url,head,body){
 		if(error) {
 			console.log(error);
 		} else {
-			res.send(response.statusCode, body)
+			console.log(body)
 		}
 	});
 }
