@@ -2,6 +2,7 @@ var request = require('request');
 var myParser = require("body-parser");
 require('dotenv').config()
 module.exports = function(app){
+	app.post("/user_setting_edit", function(req, res) {
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',

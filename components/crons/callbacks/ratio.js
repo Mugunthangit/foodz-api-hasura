@@ -25,8 +25,6 @@ module.exports = function(res_arrayItem){
 var myCallback = function(ratio) {
   ratio_value_den = res_arrayItem.no_of_seats*14
   ratio_value = Math.round(ratio/ratio_value_den);
-  console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-  console.log(ratio_value);
 	res_arrayItem['ratio'] = ratio_value;
 	return ratio
 };

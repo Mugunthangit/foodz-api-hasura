@@ -7,8 +7,6 @@ require('dotenv').config()
 module.exports = function(req,res,app){
 	var date = new Date();
 	schedule.scheduleJob('* * * *', function(){
-		console.log(req.headers);
-		console.log(req.body);
 		var type = 'POST';
 		var url = 'http://data.hasura/v1/query';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1};

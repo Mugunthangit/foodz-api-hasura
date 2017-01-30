@@ -8,7 +8,6 @@ var schedule = require('node-schedule');
 require('dotenv').config()
 module.exports = function(app){
 	schedule.scheduleJob('* * * *', function(){
-		console.log("restaurant_trending_score");
 		request({
 			url: 'http://data.hasura/v1/query',
 			method: 'POST',
@@ -27,7 +26,6 @@ module.exports = function(app){
 			if(error) {
 				console.log(error);
 			} else {
-        console.log(res_body)
         res_body.forEach( function (res_arrayItem){
 					request({
 						url: 'http://data.hasura/v1/query',

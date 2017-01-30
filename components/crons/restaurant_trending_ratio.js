@@ -8,7 +8,6 @@ var schedule = require('node-schedule');
 require('dotenv').config()
 module.exports = function(app){
 	schedule.scheduleJob('* * * *', function(){
-		console.log("restaurant_trend_ratio");
 		request({
 			url: 'http://data.hasura/v1/query',
 			method: 'POST',

@@ -40,10 +40,7 @@ module.exports = function(app){
 						if(error) {
 							console.log(error);
 						} else {
-							console.log(response.statusCode, subs_body);
 							if (subs_body.length == 1) {
-								console.log("=======================================================================");
-								console.log(subs_body);
 								var callback_obj = {};
 								invoice_for_count(app,callback_obj,subs_body[0].tbl_restaurantsunique_id);
 								invoice_tax(app,callback_obj);
@@ -87,7 +84,6 @@ module.exports = function(app){
 									if(error) {
 										console.log(error);
 									} else {
-										console.log("=========================");
 										console.log(response.statusCode, body);
 									}
 								});
