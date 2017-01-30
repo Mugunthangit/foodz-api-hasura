@@ -3,8 +3,6 @@ var myParser = require("body-parser");
 require('dotenv').config()
 module.exports = function(app){
   app.post("/sponsor_redeemption", function(req, res) {
-    console.log(req.headers);
-    console.log(req.body);
     var type = 'POST'
     var url = 'http://data.hasura/v1/query';
     var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',

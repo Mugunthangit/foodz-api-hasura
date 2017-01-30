@@ -4,7 +4,7 @@ var schedule = require('node-schedule');
 
 require('dotenv').config()
 
-module.exports = function(app){
+module.exports = function(req,res,app){
 	var date = new Date();
 	schedule.scheduleJob('* * * *', function(){
 		console.log(req.headers);

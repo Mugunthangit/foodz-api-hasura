@@ -2,9 +2,7 @@ var request = require('request');
 require('dotenv').config()
 
 module.exports = function(req,res,type,url,head,body){
-	console.log(head)
 	var date = new Date();
-	console.log(date)
 	request({
 		url: url,
 		method: type,
@@ -15,7 +13,6 @@ module.exports = function(req,res,type,url,head,body){
 			console.log(error);
 		} else {
 			users_hash_array = body[0].users_hash_tag_csv.split(",");
-			console.log(users_hash_array)
 			request({
 				url: url,
 				method: type,

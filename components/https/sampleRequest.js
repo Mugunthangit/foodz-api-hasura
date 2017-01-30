@@ -2,9 +2,8 @@ var request = require('request');
 require('dotenv').config()
 
 module.exports = function(app){
-    app.post("/restaurants/sponser", function(req, res) {
-	console.log("=====================++++++++++++++++++++++===");
-	console.log(req)
+  app.post("/restaurants/sponser", function(req, res) {
+
 	request({
 		url: 'https://data.foodz.fr/v1/query',
 		method: 'POST',

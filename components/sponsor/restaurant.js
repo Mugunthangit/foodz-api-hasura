@@ -18,7 +18,6 @@ module.exports = function(app){
 		weekday[5]="friday";
 		weekday[6]="saturday";
 		var d=new Date();
-		console.log("Today is " + weekday[d.getDay()]);
 		var today_name_value = d.getDay();
 
 		request({
@@ -37,8 +36,6 @@ module.exports = function(app){
 			if(error) {
 				console.log(error);
 			} else {
-        console.log("========================")
-        console.log(body[0].retaurant_tickets_setup[0]);
 				var date = new Date();
 				var hours = date.getUTCHours();
 				var tickets_setup_value = body[0].retaurant_tickets_setup[0]

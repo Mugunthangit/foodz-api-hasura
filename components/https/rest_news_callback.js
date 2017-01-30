@@ -17,8 +17,6 @@ request({url: 'http://data.hasura/v1/query/tbl_restaurant_news?unique_id='+user_
 		console.log(error);
 	} else {
 		var restaurant_list_res = JSON.parse(body);
-		console.log(body)
-		console.log("jjjjjjjjjjjjjjjjjjjjjjjjjj")
 		var new_array = [];
 		restaurant_list_res.forEach( function (arrayItem){
 			new_array.push(arrayItem.tbl_restaurantsunique_id)
@@ -27,18 +25,13 @@ request({url: 'http://data.hasura/v1/query/tbl_restaurant_news?unique_id='+user_
 		  return array.indexOf(value) > -1;
 		}
     	var rest_news_array = isInArray(restaurant_unique_id,new_array);
-		console.log('^^^^^^^^^^^^^^')
-		console.log(rest_news_array);
 		callback(new_array)
 		}
 	});	
 }
 
 var myCallback = function(data) {
-	console.log('got data: '+data);
 	x['rest_news_added'] = data;
-	console.log(x['rest_news_added'],"===============")
-	console.log(x);
 };
 req_var(myCallback);  
 }

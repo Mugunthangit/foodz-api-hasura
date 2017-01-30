@@ -27,13 +27,11 @@ module.exports = function(req,res,type,url,head,body){
 			console.log(error);
 		} else {
 			var injected_response_data_length = body.length;
-			console.log(body.length)
 			var injected_response_data = body;
 			var user_unique_id = req.body.unique_id;
 			var hasura_user_id = req.body.hasura_userid;
 			localStorage.setItem("user_unique_id", user_unique_id);
 			localStorage.setItem("hasura_user_id", hasura_user_id);
-			console.log(body)
 			if (injected_response_data_length != 0) {
 			injected_response_data.forEach( function (arrayItem)
 			{
@@ -41,7 +39,6 @@ module.exports = function(req,res,type,url,head,body){
 				var restaurant_unique_id = x.unique_id;
 				var user_unique_id = localStorage.getItem('user_unique_id');
 				var hasura_user_id = localStorage.getItem('hasura_user_id');
-				console.log("Enters data")
 				bookmark_value(restaurant_unique_id,x,user_unique_id,hasura_user_id);
 				cuisine_name(x,restaurant_unique_id,hasura_user_id);
 				count_checking(x,restaurant_unique_id,user_unique_id,hasura_user_id)

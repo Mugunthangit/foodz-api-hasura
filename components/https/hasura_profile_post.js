@@ -3,7 +3,6 @@ var uuid = require('node-uuid');
 require('dotenv').config()
 
 module.exports = function(req,res,type,url,head,body){
-	console.log(head)
 	request({
 		url: url,
 		method: type,
@@ -13,7 +12,6 @@ module.exports = function(req,res,type,url,head,body){
 		if(error) {
 			console.log(error);
 		} else {
-			console.log(profile_body.returning[0].hasura_userid)
 			request({
 				method: 'POST',
 				url: 'http://data.hasura/v1/query',
@@ -47,8 +45,6 @@ module.exports = function(req,res,type,url,head,body){
 				if(error) {
 					console.log(error);
 				} else {
-					console.log(response.statusCode, body);
-					console.log(body)
 						request({
 						method: 'POST',
 						url: 'http://data.hasura/v1/query',
@@ -64,7 +60,6 @@ module.exports = function(req,res,type,url,head,body){
 							if(error) {
 								console.log(error);
 							} else {
-								console.log(response.statusCode, body);
 								res.send(response.statusCode, body)
 							}
 						});

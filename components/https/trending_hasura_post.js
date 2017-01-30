@@ -29,11 +29,8 @@ module.exports = function(req,res,type,url,head,body){
 				  latitude: gps_arrayItem.geolocation_lat,
 				  longitude: gps_arrayItem.geolocation_long
 				}
-				console.log(haversine(start, end));
 				var haversine_value = haversine(start, end);
 				if (haversine_value <= 10) {
-					console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-				  console.log(gps_arrayItem);
 				}
 
       });
@@ -82,7 +79,6 @@ module.exports = function(req,res,type,url,head,body){
 				];
 			});
 		}	
-			// console.log(injected_response_data)
   			setTimeout(function() {
 				    res.send(response.statusCode,injected_response_data);
 				    return true;
