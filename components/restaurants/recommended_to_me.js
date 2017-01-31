@@ -18,7 +18,9 @@ module.exports = function(app){
 		    "payment_types","no_of_seats","max_group_limit",{"name": "restaurant_hashtag", "columns": ["hashtag","unique_id"]}],
 		    "where": {
       				"restaurant_sponsor": {"tbl_user_profileunique_id2":  req.body.unique_id } 
-				}
+				},
+				"limit": 10,
+				"offset":req.body.offset
 		  }
 		} 
     require('.././https/temp_hasura_post')(req,res,type,url,head,body);
