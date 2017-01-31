@@ -37,12 +37,6 @@ module.exports = function(req,res,type,url,head,body){
 					res.send(response.statusCode, news_body)
 				}
 			});
-
-
-
-
-
-
 		}
 	});
 }
