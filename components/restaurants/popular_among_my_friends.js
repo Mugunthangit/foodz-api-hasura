@@ -7,17 +7,15 @@ module.exports = function(app){
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
-		var body = {
-		  "type" : "select",
-		  "args" : {
-		    "table" : "tbl_restaurants",
-		    "columns": ["id","unique_id","restaurant_name","description",  "banner_image","avg_cost","trend_score",
-		    "city","geolocation_lat","geolocation_long","mobile","alt_mobile","email","website", 
-		    "payment_types","no_of_seats","max_group_limit",{"name": "restaurant_hashtag", "columns": ["hashtag","unique_id"]}]
-
-
-		  }
-		} 
-    require('.././https/temp_hasura_post')(req,res,type,url,head,body);
+		var body = 	{
+				"type" : "select",
+				"args" : 
+					{
+						"table" : "popular_restaurant",
+						"columns": ["*.*"],
+						"where": {	"tbl_user_profileunique_id": "4757f560-cb39-11e6-97bd-e310a338d4a5"	} 
+					}
+			} 
+    require('.././https/popular_hasura_post')(req,res,type,url,head,body);
 	});
 }
