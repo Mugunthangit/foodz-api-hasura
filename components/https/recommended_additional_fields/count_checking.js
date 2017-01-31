@@ -32,8 +32,7 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 				  "args" : {
 				    "table" : "tbl_restaurants",
 				    "columns": ["conversion_count"],
-				    "where": {"unique_id": restaurantsunique_id,
-				    "tbl_user_profileunique_id": user_unique_id}
+				    "where": {"unique_id": restaurantsunique_id}
 				  }
 				}
 				}, function(error, response, body){
@@ -41,7 +40,10 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 					console.log(error);
 				} else 
 				{
-					var conv_count = body.length
+					var conv_count = body[0].conversion_count
+					console.log("restaurant_id",restaurantsunique_id)
+					console.log("conversion_count:",conv_count)
+					console.log("count:",count)
 					if (count >= conv_count){
 						callback(true)
 					}

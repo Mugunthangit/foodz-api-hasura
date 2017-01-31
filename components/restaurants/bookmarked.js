@@ -12,7 +12,7 @@ module.exports = function(app){
 		  "type" : "select",
 		  "args" : {
 		    "table" : "tbl_user_favorite",
-		    "columns": ["*.*.*"],
+		    "columns": ["*.*"],
 		    "where": {"tbl_user_profileunique_id": req.body.unique_id}
 		  }
 		}
