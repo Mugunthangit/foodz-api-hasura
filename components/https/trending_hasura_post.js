@@ -70,15 +70,14 @@ module.exports = function(req,res,type,url,head,body){
 				var hasura_user_id = localStorage.getItem('hasura_user_id');
 				console.log(arrayItem)
 				// dummy value to avoid instructure way 
-				x['recommended_by'] = [];
-				x['use_bonus'] = true;
+				x['use_bonus'] = "";
 				x['food_type'] = "";
-				bookmark_value(restaurant_unique_id,x,user_unique_id,hasura_user_id);
-				cuisine_name(x,restaurant_unique_id,hasura_user_id);
+				// bookmark_value(restaurant_unique_id,x,user_unique_id,hasura_user_id);
+				// cuisine_name(x,restaurant_unique_id,hasura_user_id);
 				count_checking(x,restaurant_unique_id,user_unique_id,hasura_user_id)
-				recommend_friends(x,restaurant_unique_id,user_unique_id,hasura_user_id)
-				food_discount(x,restaurant_unique_id,hasura_user_id)
-				ticket_sponsor(x,restaurant_unique_id,user_unique_id,hasura_user_id)
+				// recommend_friends(x,restaurant_unique_id,user_unique_id,hasura_user_id)
+				// food_discount(x,restaurant_unique_id,hasura_user_id)
+				// ticket_sponsor(x,restaurant_unique_id,user_unique_id,hasura_user_id)
 				x['restaurant_trendscore'] = arrayItem.trend_score;
 				x['restaurant_image'] = arrayItem.banner_image
 				console.log(x['restaurant_image'] = arrayItem.banner_image)
