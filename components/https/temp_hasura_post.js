@@ -57,7 +57,7 @@ module.exports = function(req,res,type,url,head,body){
   			setTimeout(function() {
 				    res.send(response.statusCode,injected_response_data);
 				    return true;
-				}, 5000);
+				}, 8000);
 		}
 	});
 }
