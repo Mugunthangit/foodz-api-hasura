@@ -17,7 +17,7 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 
 module.exports = function(req,res,type,url,head,body){
 	request({
-		url: url,
+		url: url,	
 		method: type,
 		headers: head,
 		json: body
@@ -80,7 +80,6 @@ module.exports = function(req,res,type,url,head,body){
 				// ticket_sponsor(x,restaurant_unique_id,user_unique_id,hasura_user_id)
 				x['restaurant_trendscore'] = arrayItem.trend_score;
 				x['restaurant_image'] = arrayItem.banner_image
-				console.log(x['restaurant_image'] = arrayItem.banner_image)
 			});
 
 		}	
