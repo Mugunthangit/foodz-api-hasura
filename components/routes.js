@@ -67,7 +67,7 @@ module.exports = function(app){
     require('./crons/restaurant_trending_ratio')(app);
     require('./crons/restaurant_trending_score')(app);
     require('./crons/ticket_status_expires')(app);
-    
+    require('./crons/popular_friends')(app);
     //my_fb_friends   
     require('./fb_friends/my_fb_friends_list')(app);
     //master_get
