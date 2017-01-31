@@ -8,6 +8,7 @@ var uuid = require('node-uuid');
 require('dotenv').config()
 module.exports = function(app){
 	app.post("/edit_profile", function(req, res) {
+		var profile_base64 = req.body.profile_base64;
 		var uuid_value = uuid.v1()
 		var encoded = req.body.profile_base64
  		fs.writeFile("./uploads/profile/"+uuid_value+".jpg", new Buffer(encoded, "base64"), function(err) {});
@@ -15,7 +16,8 @@ module.exports = function(app){
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
-		if (req.body.profile_base64) {
+		if (profile_base64 = null) {
+			    console.log("inside if base64")
 					var body = {
 					"type" : "update",
 					"args" : {
@@ -55,7 +57,9 @@ module.exports = function(app){
 					}
 				}
 			} else{
-						var body = {
+			    console.log("inside else if base64")
+
+					var body = {
 					"type" : "update",
 					"args" : {
 						"table" : "tbl_user_profile",
@@ -85,7 +89,6 @@ module.exports = function(app){
 							"city": req.body.city,
 							"facebook_profile":req.body.facebook_profile,
 							"personal_description":req.body.personal_description,
-
 						},
 						"where": {
 							"unique_id": req.body.unique_id
