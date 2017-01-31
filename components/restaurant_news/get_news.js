@@ -22,8 +22,8 @@ module.exports = function(req,res,type,url,head,body){
 				  "args" : {
 				    "table" : "tbl_restaurant_news",
 				    "columns" : ["id","unique_id","tbl_restaurantsunique_id","news_info","news_image_url","visibility_start_date","visibility_end_date",
-				    "is_approved","news_url","created_at","modified_at",
-				    "{"name": "news_restaurant", "columns": ["restaurant_name"]}"],
+				    "is_approved","news_url","created_at","modified_at",{"name": "news_restaurant", "columns": ["restaurant_name"]}
+				      ],
 				    "where": {
 					    "is_approved": true,
 					    "visibility_start_date": { "$lt": date },

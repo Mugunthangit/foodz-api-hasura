@@ -5,8 +5,8 @@ require('dotenv').config()
 module.exports = function(app){
 	app.post("/restaurant_news", function(req, res) {
 		var type = 'POST';
-		var url = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1};
+		var url = 'https://data.foodz.fr/v1/query';
+		var head = {'Content-Type':'application/json','Authorization':'Bearer i2wfk5p2dnyi01bvvj7i6k2t1jipepcj'};
 		var body ={
 			  "type" : "select",
 			  "args" : {
