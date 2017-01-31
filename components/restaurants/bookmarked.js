@@ -12,8 +12,10 @@ module.exports = function(app){
 		  "type" : "select",
 		  "args" : {
 		    "table" : "tbl_user_favorite",
-		    "columns": ["*.*"],
-		    "where": {"tbl_user_profileunique_id": req.body.unique_id}
+		    "columns": ["*.*.*"],
+		    "where": {"tbl_user_profileunique_id": req.body.unique_id},
+		    "limit": 10,
+			"offset":req.body.offset
 		  }
 		}
     require('.././https/bookmark_hasura_post')(req,res,type,url,head,body);
