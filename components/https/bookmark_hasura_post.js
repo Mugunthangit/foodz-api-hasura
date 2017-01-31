@@ -2,6 +2,12 @@ var request = require('request');
 require('dotenv').config()
 
 var bookmark_value = require('./bookmark_value');
+var cuisine_name = require('./recommended_additional_fields/restaurant_cuisine');
+var count_checking = require('./recommended_additional_fields/count_checking')
+var recommend_friends = require('./recommended_additional_fields/recommended_friends')
+var food_discount = require('./recommended_additional_fields/food_discount')
+var ticket_sponsor = require('./recommended_additional_fields/ticket_sponsored')
+
 
 if (typeof localStorage === "undefined" || localStorage === null) {
 	var LocalStorage = require('node-localstorage').LocalStorage;
@@ -31,21 +37,17 @@ module.exports = function(req,res,type,url,head,body){
 				var restaurant_unique_id = x.unique_id;
 				var user_unique_id = localStorage.getItem('user_unique_id');
 				var hasura_user_id = localStorage.getItem('hasura_user_id');
+				x['recommended_by'] = [];
+				x['use_bonus'] = true;
+				x['food_type'] = "";
 				bookmark_value(restaurant_unique_id,x,user_unique_id,hasura_user_id);
-				x['food_type'] = 'chinese';
-				x['food_discount'] = '10%';
-				x['is_sponsered'] = false;
-				x['restaurant_trendscore'] = arrayItem.restaurant_fav.trend_score
-				x['restaurant_image'] = [{"unique_id":"123","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"},
-				{"unique_id":"1234","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"},
-				{"unique_id":"12345","image_url":"http://www.vidteq.com/chennai/jpg/vt/vtieiDOVTTQITCIDVECDP.jpg"}];	
-				x['recommended_by'] = [{"unique_id":"145551151823","nickname":"mockusername","users_hash_tag_csv":"#sushi, #veg","facebook_id":"1","img_url":"http://media.tumblr.com/tumblr_m0rwptJAEz1qm0omn.jpg"},
-				{"unique_id":"145551151823","nickname":"mockusername","users_hash_tag_csv":"#sushi, #veg","facebook_id":"1","img_url":"http://media.tumblr.com/tumblr_m0rwptJAEz1qm0omn.jpg"},
-				{"unique_id":"145551151823","nickname":"mockusername","users_hash_tag_csv":"#sushi, #veg","facebook_id":"1","img_url":"http://media.tumblr.com/tumblr_m0rwptJAEz1qm0omn.jpg"},
-				{"unique_id":"145551151823","nickname":"mockusername","users_hash_tag_csv":"#sushi, #veg","facebook_id":"1","img_url":"http://media.tumblr.com/tumblr_m0rwptJAEz1qm0omn.jpg"},
-				{"unique_id":"145551151823","nickname":"mockusername","users_hash_tag_csv":"#sushi, #veg","facebook_id":"1","img_url":"http://media.tumblr.com/tumblr_m0rwptJAEz1qm0omn.jpg"},
-				{"unique_id":"145551151823","nickname":"mockusername","users_hash_tag_csv":"#sushi, #veg","facebook_id":"1","img_url":"http://media.tumblr.com/tumblr_m0rwptJAEz1qm0omn.jpg"}
-				];
+				cuisine_name(x,restaurant_unique_id,hasura_user_id);
+				count_checking(x,restaurant_unique_id,user_unique_id,hasura_user_id)
+				recommend_friends(x,restaurant_unique_id,user_unique_id,hasura_user_id)
+				food_discount(x,restaurant_unique_id,hasura_user_id)
+				ticket_sponsor(x,restaurant_unique_id,user_unique_id,hasura_user_id)
+				x['restaurant_trendscore'] = arrayItem.trend_score;
+				x['restaurant_image'] = arrayItem.banner_image
 			});
   			setTimeout(function() {
 				    res.send(response.statusCode,injected_response_data);
