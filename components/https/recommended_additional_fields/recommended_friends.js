@@ -54,7 +54,6 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 						var sponsored_array = []
 
 						sponsorreponse.forEach(function(sponsor_user_data){
-							console.log(sponsor_user_data.tbl_user_profileunique_id)
 							if (sponsor_user_data.tbl_user_profileunique_id != null){
 								sponsored_array.push(sponsor_user_data.tbl_user_profileunique_id)
 							}
