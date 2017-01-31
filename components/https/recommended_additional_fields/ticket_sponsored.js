@@ -4,7 +4,7 @@ require('dotenv').config()
 module.exports = function(x,restaurantsunique_id, user_unique_id){
 	function req_var(callback){
 		request({
-			url: 'https://data.foodz.fr/v1/query',
+			url: 'http://data.hasura/v1/query',
 			method: 'POST',
 			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 			json: {
