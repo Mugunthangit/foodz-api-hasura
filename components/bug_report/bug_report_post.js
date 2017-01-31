@@ -8,8 +8,9 @@ module.exports = function(app){
 		console.log(req.headers);
 		console.log(req.body);
 		var type = 'POST'
-		var url = 'https://data.oologic14.hasura-app.io/v1/query';
-		var head = {'Content-Type':'application/json','Authorization': 'Bearer 0u1bwfbp6uxbjn6fhmthg32kp54of2te'}
+		var url = 'http://data.hasura/v1/query';
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',
+					'X-Hasura-User-ID': 1}
 		var body = {
 			"type" : "insert",
 			"args" : {

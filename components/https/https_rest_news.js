@@ -9,7 +9,6 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 
 
 module.exports = function(req,res,type,url,head,body){
-	console.log(head)
 	request({
 		url: url,
 		method: type,
@@ -20,21 +19,16 @@ module.exports = function(req,res,type,url,head,body){
 				console.log(error);
 				} else {
 				var hash_values = [];
-				console.log(body)
 	            body.forEach(function(arr) {
-            		console.log(arr.users_hash_tag_csv)
             		var hash_tag_array = arr.users_hash_tag_csv.split(',');
-            		console.log(hash_tag_array)
             		// var restaurant_id_array = [];
             		var chumma= "inside the loop";
-            		console.log("--------------------------");
                 	hash_tag_array.forEach(function (arrayItem) {
 	            		// var restaurant_id_array = [];
 		                request({
 							url: 'http://data.hasura/v1/query',
 							method: 'POST',
-							headers: {'Content-Type':'application/json','Authorization': 
-									'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+							headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 							json: {
 							  "type" : "select",
 							  "args" : {
@@ -50,8 +44,6 @@ module.exports = function(req,res,type,url,head,body){
 								} else {
 									function array_test(){
 									// var data = response.body
-									console.log(response.body)
-									console.log("================");
 									}
 									// restaurant_id_array.concat(data)
 							// 		console.log("+++++++++++++++++++++++++++++++++++=");
@@ -84,7 +76,6 @@ module.exports = function(req,res,type,url,head,body){
 					});
 				});
             	var data = arrays_value(response,body);
-				console.log(data)
 			});
 		};
 	});

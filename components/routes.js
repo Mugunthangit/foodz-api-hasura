@@ -43,7 +43,6 @@ module.exports = function(app){
     require('./restaurants/delete_res_menu_category')(app);
     //Restaurant News
     require('./restaurant_news/rest_news')(app);
-    require('./restaurant_news/lookup')(app);
     //Restaurant User Settings
     require('./user_settings/user_settings_insert')(app);
     require('./user_settings/user_settings_edit')(app);
@@ -67,6 +66,8 @@ module.exports = function(app){
     require('./crons/restaurant_ratio')(app);
     require('./crons/restaurant_trending_ratio')(app);
     require('./crons/restaurant_trending_score')(app);
+    require('./crons/ticket_status_expires')(app);
+    
     //my_fb_friends   
     require('./fb_friends/my_fb_friends_list')(app);
     //master_get

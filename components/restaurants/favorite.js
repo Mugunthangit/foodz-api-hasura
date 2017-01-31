@@ -5,8 +5,6 @@ require('dotenv').config()
 
 module.exports = function(app){
 	app.post("/favorite", function(req, res) {
-		console.log(req.headers);
-		console.log(req.body);
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}
@@ -25,8 +23,6 @@ module.exports = function(app){
     require('.././https/hasura_post')(req,res,type,url,head,body);
 	});
 	app.post("/undo_favorite", function(req, res) {
-		console.log(req.headers);
-		console.log(req.body);
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID':req.body.hasura_userid}

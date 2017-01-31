@@ -46,10 +46,8 @@ module.exports = function(req,res,type,url,head,body){
 				{"unique_id":"145551151823","nickname":"mockusername","users_hash_tag_csv":"#sushi, #veg","facebook_id":"1","img_url":"http://media.tumblr.com/tumblr_m0rwptJAEz1qm0omn.jpg"}
 				];
 			});
-			console.log(injected_response_data)
   			setTimeout(function() {
 				    res.send(response.statusCode,injected_response_data);
-				    console.log('after response','---------------------------------------');
 				    return true;
 				}, 3000);
 			

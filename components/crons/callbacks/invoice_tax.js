@@ -27,8 +27,6 @@ module.exports = function(app,callback_obj){
 
 
 var myCallback = function(tax_details) {
-	console.log("*************")
-	console.log(tax_details);
 	callback_obj['tbl_master_taxunique_id'] = tax_details[0].unique_id;
 	callback_obj['tax_percentage'] = tax_details[0].tax_percentage;
 

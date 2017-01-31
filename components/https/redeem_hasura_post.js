@@ -2,7 +2,6 @@ var request = require('request');
 require('dotenv').config()
 
 module.exports = function(req,res,type,url,head,body){
-	console.log(head)
 	request({
 		url: url,
 		method: type,

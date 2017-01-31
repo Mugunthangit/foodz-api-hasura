@@ -23,12 +23,8 @@ module.exports = function(){
 			if(error) {
 				console.log(error);
 			} else {
-				// console.log(response.body);	
-				// console.log("It Passes")
-				// console.log("---------------------------------------------")
 				var values =  response.body;
 				values.forEach(function (check_user_id){
-				// console.log(check_user_id.friends_tbl_user_profileunique_id2)
 				var get_user_id = check_user_id.fb_friend_name;
 				
 				request({
@@ -49,18 +45,11 @@ module.exports = function(){
 					if(error) {
 						console.log(error);
 					} else {
-						// console.log(body.length);	
-						// console.log(get_user_id)
 						if (response.body.length != 0) {
-							// console.log("success")
-							// console.log("-------------------------------------------")
 							var datas = response.body
-							// console.log(response.body)
 							datas.forEach(function (change_value){
 							var check_app_user = change_value.fb_friend_name;
 							var fb_unique_id = change_value.unique_id
-							// console.log("It Passes")
-							// console.log("===========================================")
 							request({
 							url: 'http://data.hasura/v1/query',
 							method: 'POST',
@@ -80,9 +69,6 @@ module.exports = function(){
 								if(error) {
 									console.log(error);
 								} else {
-									// console.log(response.body);	
-									// console.log("It Passes")
-									// console.log("+++++++++++++++++++++++++++++++++++++++++++++")
 								}
 							})
 						})	
@@ -95,7 +81,6 @@ module.exports = function(){
 			}
 		})
 	});
-	    console.log('Welcome to foodz');
 
 };
 

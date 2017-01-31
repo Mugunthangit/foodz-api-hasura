@@ -5,8 +5,6 @@ require('dotenv').config()
 
 module.exports = function(app){
 	app.post("/sign_up", function(req, res) {
-		console.log(req.headers);
-		console.log(req.body);
 		var type = 'POST'
 		var url = 'http://auth.hasura/admin/user/create';
 		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',

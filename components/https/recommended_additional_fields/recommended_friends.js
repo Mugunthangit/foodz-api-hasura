@@ -1,12 +1,12 @@
 var request = require('request');
 require('dotenv').config()
 
-module.exports = function(x,restaurantsunique_id, user_unique_id){
+module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id){
 	function req_var(callback){
 		request({
-        	url: 'https://data.foodz.fr/v1/query',
+        	url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id},
 			json: {
 			  "type" : "select",
 			  "args" : {
@@ -24,7 +24,6 @@ module.exports = function(x,restaurantsunique_id, user_unique_id){
 			{
 				var array_list = []
 				body.forEach(function(new_values){
-					console.log(new_values.friends_tbl_user_profileunique_id2)
 					if (new_values.friends_tbl_user_profileunique_id2 != null){
 						array_list.push(new_values.friends_tbl_user_profileunique_id2)
 					}
@@ -33,9 +32,9 @@ module.exports = function(x,restaurantsunique_id, user_unique_id){
 				var length_friends = body.length
 				if (body.length != 0 )
 					request({
-		        	url: 'https://data.foodz.fr/v1/query',
+		        	url: 'http://data.hasura/v1/query',
 					method: 'POST',
-					headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+					headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id},
 					json: {
 					  "type" : "select",
 					  "args" : {
@@ -52,21 +51,19 @@ module.exports = function(x,restaurantsunique_id, user_unique_id){
 						console.log(error);
 					} else 
 					{
-						console.log("======================================")
-						console.log(sponsorreponse)
 						var sponsored_array = []
+
 						sponsorreponse.forEach(function(sponsor_user_data){
 							console.log(sponsor_user_data.tbl_user_profileunique_id)
 							if (sponsor_user_data.tbl_user_profileunique_id != null){
 								sponsored_array.push(sponsor_user_data.tbl_user_profileunique_id)
 							}
 
-						})		
-						
+						})
 							request({
-				        	url: 'https://data.foodz.fr/v1/query',
+				        	url: 'http://data.hasura/v1/query',
 							method: 'POST',
-							headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+							headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': hasura_user_id},
 							json: {
 							  "type" : "select",
 							  "args" : {
@@ -83,14 +80,10 @@ module.exports = function(x,restaurantsunique_id, user_unique_id){
 								console.log(error);
 							} else 
 							{
-								console.log("======================================")
 								callback(user_response_body)
 					
 							}
-						});
-
-						// callback(sponsorreponse)
-			
+						});			
 					}
 				});
 		}

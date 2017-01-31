@@ -6,9 +6,9 @@ require('dotenv').config()
 module.exports = function(app){
     app.post("/get_popular_restaurant_by_friends", function(req, res) {
 	request({
-		url: 'https://data.foodz.fr/v1/query',
+		url: 'http://data.hasura/v1/query',
 		method: 'POST',
-		headers: {'Content-Type':'application/json','Authorization':'Bearer 5a8lqgvms1un9dlmfsvhgt2m56dhuc3m'},
+		headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
 		json:  {
 			  "type" : "select",
 			  "args" : {
@@ -21,12 +21,8 @@ module.exports = function(app){
 		if(error) {
 			console.log(error);
 		} else {
-			console.log(response.statusCode, body);
 			body.forEach(function (values){
-				console.log(values.friends_tbl_user_profileunique_id2)
 				if (values.friends_tbl_user_profileunique_id2 != null){
-					console.log("+++++++++++++++++++++++++++++++++++++++++")
-					console.log(values.friends_tbl_user_profileunique_id2)
 					request({
 					url: 'https://data.foodz.fr/v1/query',
 					method: 'POST',
@@ -46,13 +42,11 @@ module.exports = function(app){
 					if(error) {
 						console.log(error);
 					} else {
-						console.log(body);
 						counter = {}
 						body.forEach(function(obj) {
 						    var key = JSON.stringify(obj)
 						    counter[key] = (counter[key] || 0) + 1
 						})
-						console.log(counter)
 					}
 				});
 				}

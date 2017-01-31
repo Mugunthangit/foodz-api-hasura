@@ -5,6 +5,8 @@ var bookmark_value = require('./bookmark_value');
 var cuisine_name = require('./recommended_additional_fields/restaurant_cuisine');
 var count_checking = require('./recommended_additional_fields/count_checking')
 var recommend_friends = require('./recommended_additional_fields/recommended_friends')
+var food_discount = require('./recommended_additional_fields/food_discount')
+var ticket_sponsor = require('./recommended_additional_fields/ticket_sponsored')
 
 
 
@@ -25,15 +27,11 @@ module.exports = function(req,res,type,url,head,body){
 			console.log(error);
 		} else {
 			var injected_response_data_length = body.length;
-			console.log(body.length)
 			var injected_response_data = body;
 			var user_unique_id = req.body.unique_id;
 			var hasura_user_id = req.body.hasura_userid;
-			console.log(user_unique_id)
-			console.log(hasura_user_id)
 			localStorage.setItem("user_unique_id", user_unique_id);
 			localStorage.setItem("hasura_user_id", hasura_user_id);
-			console.log(body)
 			if (injected_response_data_length != 0) {
 			injected_response_data.forEach( function (arrayItem)
 			{
@@ -41,13 +39,15 @@ module.exports = function(req,res,type,url,head,body){
 				var restaurant_unique_id = x.unique_id;
 				var user_unique_id = localStorage.getItem('user_unique_id');
 				var hasura_user_id = localStorage.getItem('hasura_user_id');
-				console.log("Enters data")
+				x['recommended_by'] = [];
+				x['use_bonus'] = true;
+				x['food_type'] = "";
 				bookmark_value(restaurant_unique_id,x,user_unique_id,hasura_user_id);
-				cuisine_name(x,restaurant_unique_id);
-				count_checking(x,restaurant_unique_id,user_unique_id)
-				recommend_friends(x,restaurant_unique_id,user_unique_id)
-				x['food_discount'] = '10%';
-				x['is_sponsered'] = false;
+				cuisine_name(x,restaurant_unique_id,hasura_user_id);
+				count_checking(x,restaurant_unique_id,user_unique_id,hasura_user_id)
+				recommend_friends(x,restaurant_unique_id,user_unique_id,hasura_user_id)
+				food_discount(x,restaurant_unique_id,hasura_user_id)
+				ticket_sponsor(x,restaurant_unique_id,user_unique_id,hasura_user_id)
 				x['restaurant_trendscore'] = arrayItem.trend_score;
 				x['restaurant_image'] = arrayItem.banner_image
 			});
