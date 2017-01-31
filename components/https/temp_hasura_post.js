@@ -39,6 +39,10 @@ module.exports = function(req,res,type,url,head,body){
 				var restaurant_unique_id = x.unique_id;
 				var user_unique_id = localStorage.getItem('user_unique_id');
 				var hasura_user_id = localStorage.getItem('hasura_user_id');
+				// dummy value to avoid instructure way 
+  			x['recommended_by'] = [];
+  			x['use_bonus'] = true;
+ 				x['food_type'] = "";
 				bookmark_value(restaurant_unique_id,x,user_unique_id,hasura_user_id);
 				cuisine_name(x,restaurant_unique_id,hasura_user_id);
 				count_checking(x,restaurant_unique_id,user_unique_id,hasura_user_id)
