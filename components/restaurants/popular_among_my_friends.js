@@ -12,7 +12,7 @@ module.exports = function(app){
 				"args" : 
 					{
 						"table" : "popular_restaurant",
-						"columns": ["*.*"],
+						"columns": ["*.*.*"],
 						"where": {	"tbl_user_profileunique_id": "4757f560-cb39-11e6-97bd-e310a338d4a5"	} 
 					}
 			} 
