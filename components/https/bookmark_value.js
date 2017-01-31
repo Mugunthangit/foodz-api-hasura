@@ -17,7 +17,6 @@ request({url: 'http://data.hasura/v1/template/tbl_user_favorite_list?tbl_user_pr
 		console.log(error);
 	} else {
 		var restaurant_list_res = JSON.parse(body);
-		console.log(restaurant_list_res)
 		var new_array = [];
 		if (restaurant_list_res.length != 0){
 		restaurant_list_res.forEach( function (arrayItem){

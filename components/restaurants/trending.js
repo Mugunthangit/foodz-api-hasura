@@ -5,7 +5,7 @@ module.exports = function(app){
 	app.post("/restaurants/trending_restaurants", function(req, res) {
 		var type = 'POST'
 		var url = 'http://data.hasura/v1/query';
-		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1};
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid};
 		var body = {
 		  "type" : "select",
 		  "args" : {
