@@ -11,7 +11,7 @@ module.exports = function(app){
 			request({
         	url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid},
 				json: {
 					"type" : "select",
 					"args" : {
@@ -19,7 +19,7 @@ module.exports = function(app){
 						"columns": ["*"],
 						"where":{
 							"fb_friend_name":fb_user.fb_friend_name,
-							"tbl_user_profileunique":req.body.tbl_user_profileunique
+							"tbl_user_profileunique_id":req.body.tbl_user_profileunique_id
 						}
 					}
 				}
@@ -27,11 +27,12 @@ module.exports = function(app){
 				if(error) {
 					console.log(error);
 				} else {
-					if (body == 0) { 
+					console.log(body.length)
+					if (body.length == 0) { 
 						request({
-        	url: 'http://data.hasura/v1/query',
-			method: 'POST',
-			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
+			        	url: 'http://data.hasura/v1/query',
+						method: 'POST',
+						headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid},
 							json: {
 								"type" : "insert",
 								"args" : {
@@ -66,9 +67,9 @@ module.exports = function(app){
 					}
 					else{
 						request({
-        	url: 'http://data.hasura/v1/query',
-			method: 'POST',
-			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
+				        	url: 'http://data.hasura/v1/query',
+							method: 'POST',
+							headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid},
 							json: {
 								"type" : "update",
 								"args" : {
