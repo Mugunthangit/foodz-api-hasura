@@ -39,7 +39,8 @@ request({
 			"table" : "tbl_user_facebook_friends",
 			"columns": ["*.*"],
 			"where":{
-				"fb_friend_name":fb_user.fb_friend_name
+				"fb_friend_name":fb_user.fb_friend_name,
+				 "tbl_user_profileunique_id": req.body.tbl_user_profileunique_id
 			}
 		}
 	}
