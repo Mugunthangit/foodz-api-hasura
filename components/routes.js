@@ -14,6 +14,7 @@ module.exports = function(app){
 	require('./restaurants/recommended_by_me')(app);
 	require('./restaurants/recommended_to_me')(app);
     require('./restaurants/popular_in_friends')(app);
+    require('./restaurants/single_rest_detail')(app);
     //Restaurant Sponsors
     require('./sponsor/restaurant')(app);
     require('./sponsor/sponsor_msg_update')(app);
@@ -70,6 +71,7 @@ module.exports = function(app){
     // require('./crons/popular_friends')(app);
     //my_fb_friends   
     require('./fb_friends/my_fb_friends_list')(app);
+    require('./fb_friends/fb_app_user_status')(app);
     //master_get
     require('./master_get/master_trendscore_calculator')(app);
     //image_uploader

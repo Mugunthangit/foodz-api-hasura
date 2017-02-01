@@ -12,9 +12,11 @@ module.exports = function(req,res,type,url,head,body){
 		if(error) {
 			console.log(error);
 		} else {
-			console.log(users_hash_array.length)
 			if (body.length != 0){
+				console.log(body.length)
+				console.log(body)
 				users_hash_array = body[0].users_hash_tag_csv.split(",");
+				console.log(users_hash_array)
 				request({
 					url: url,
 					method: type,
