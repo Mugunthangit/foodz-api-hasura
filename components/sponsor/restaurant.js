@@ -38,6 +38,7 @@ module.exports = function(app){
 			} else {
 				var date = new Date();
 				var hours = date.getUTCHours();
+				if (typeof body[0].retaurant_tickets_setup[0] != 'undefined') {
 				var tickets_setup_value = body[0].retaurant_tickets_setup[0]
 				var type = 'POST'
 				var url = 'http://data.hasura/v1/query';
@@ -106,6 +107,13 @@ module.exports = function(app){
 						} 
 						require('.././https/hasura_post')(req,res,type,url,head,body);
 					}
+
+
+				}
+				if (typeof body[0].retaurant_tickets_setup[0] == "undefined") {
+					res.send("No campaign available for this restaurant")
+				}
+
 
 				}
 			});
