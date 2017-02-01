@@ -8,14 +8,16 @@ module.exports = function(app){
 	request({
 		url: 'http://data.hasura/v1/query',
 		method: 'POST',
-		headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': 1},
+		headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid},
 		json:  {
 			  "type" : "select",
 			  "args" : {
 			    "table" : "tbl_user_facebook_friends",
 			    "columns": ["friends_tbl_user_profileunique_id2"],
-			     "where":{"tbl_user_profileunique_id": req.body.tbl_user_profileunique_id}
-			  }
+				"where": {"tbl_user_profileunique_id": req.body.unique_id,"friends_count":{"$ne":0}},
+						"limit": 10,
+						"offset":req.body.offset
+				 }
 			} 
 	}, function(error, response, body){
 		if(error) {

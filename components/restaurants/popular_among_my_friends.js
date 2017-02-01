@@ -13,7 +13,10 @@ module.exports = function(app){
 					{
 						"table" : "popular_restaurant",
 						"columns": ["*.*.*"],
-						"where": {	"tbl_user_profileunique_id": "4757f560-cb39-11e6-97bd-e310a338d4a5"	} 
+						"where": {"tbl_user_profileunique_id": req.body.unique_id,"friends_count":{"$ne":0}},
+						"limit": 10,
+						"offset":req.body.offset,
+						"order_by":"-friends_count"
 					}
 			} 
     require('.././https/popular_hasura_post')(req,res,type,url,head,body);
