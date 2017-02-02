@@ -7,8 +7,6 @@ require('dotenv').config()
 
 module.exports = function(app){
 	app.post("/create_sponsor", function(req, res) {
-
-
 		var weekday=new Array(7);
 		weekday[0]="sunday";
 		weekday[1]="monday";
@@ -19,7 +17,6 @@ module.exports = function(app){
 		weekday[6]="saturday";
 		var d=new Date();
 		var today_name_value = d.getDay();
-
 		request({
 			url: 'http://data.hasura/v1/query',
 			method: 'POST',
@@ -38,7 +35,7 @@ module.exports = function(app){
 			} else {
 				var date = new Date();
 				var hours = date.getUTCHours();
-				if (typeof body[0].retaurant_tickets_setup[0] != 'undefined') {
+				if (body.length != 0) {
 				var tickets_setup_value = body[0].retaurant_tickets_setup[0]
 				var type = 'POST'
 				var url = 'http://data.hasura/v1/query';
@@ -107,15 +104,12 @@ module.exports = function(app){
 						} 
 						require('.././https/hasura_post')(req,res,type,url,head,body);
 					}
-
-
 				}
-				if (typeof body[0].retaurant_tickets_setup[0] == "undefined") {
-					res.send("No campaign available for this restaurant")
+				else{
+					res.send({"status":"no tickets available for this restaurant"})
 				}
+			}
 
-
-				}
-			});
+		});
 	});
 }
