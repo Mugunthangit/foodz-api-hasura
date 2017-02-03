@@ -22,12 +22,14 @@ module.exports = function(x,restaurantsunique_id, user_unique_id,hasura_user_id)
 			} else 
 
 			{
+				if(body.length != 0){
 				var array_list = []
 				body.forEach(function(new_values){
 					if (new_values.friends_tbl_user_profileunique_id2 != null){
 						array_list.push(new_values.friends_tbl_user_profileunique_id2)
 					}
-				})				
+				})		
+				}		
 
 				var length_friends = body.length
 				if (body.length != 0 )

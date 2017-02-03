@@ -19,7 +19,8 @@ module.exports = function(x,restaurantsunique_id,hasura_user_id){
 			if(error) {
 				console.log(error);
 			} else 
-			{
+			{				
+				if(body.length != 0){
 				body.forEach(function (cuisine_values)
 				{
 					var rest_cuisine = cuisine_values.tbl_master_cuisineunique_id
@@ -52,6 +53,7 @@ module.exports = function(x,restaurantsunique_id,hasura_user_id){
 						}
 					});
 				})
+			}	
 			}
 	});
 }

@@ -29,7 +29,7 @@ module.exports = function(app){
 				}
 				sponsor_array_values=sponsor_array_values+'"'+sponsor_array[i]+'"';
 			}
-			text=text+'"restaurant_sponsor":{"sponsor_name":{ "$in":['+sponsor_array_values+']},"tbl_user_profileunique_id": {"$eq":"'+req.body.tbl_user_profileunique_id+'"}}';
+			text=text+'"restaurant_sponsor":{"sponsor_name":{ "$in":['+sponsor_array_values+']},"tbl_user_profileunique_id": {"$eq":"'+req.body.unique_id+'"}}';
 		}
 		if (restaurant_city.length!=0) {
 			if (sponsor.length!=0) {
@@ -67,7 +67,13 @@ module.exports = function(app){
 			if(error) {
 				console.log(error);
 			} else {
-				require('.././https/temp_hasura_post')(req,res,type,url,head,body);
+				console.log(body.length)
+				if(body.length != 0){
+					require('.././https/search_hasura_post')(req,res,type,url,head,body);
+				}
+				else{
+					res.send([])
+				}
 			}
 		});
 	});
