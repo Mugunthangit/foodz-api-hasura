@@ -76,4 +76,6 @@ module.exports = function(app){
     require('./master_get/master_trendscore_calculator')(app);
     //image_uploader
     require('./image_uploader/insert_restaurant_image')(app);
+    //feedback
+    require('./feedback/app_feedback')(app);
 }
