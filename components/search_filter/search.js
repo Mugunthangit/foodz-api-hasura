@@ -1,8 +1,13 @@
-var request = require('request');
+		var request = require('request');
 require('dotenv').config()
 
 module.exports = function(app){
 	app.post("/search_by_restaurant_city", function(req, res){
+		var type = 'POST';
+		var url = 'http://data.hasura/v1/query';
+		var head = {'Content-Type':'application/json','X-Hasura-Role':'admin',
+		'X-Hasura-User-ID':req.body.hasura_userid};
+
 		var sponsor = req.body.sponsor
 		var restaurant_city = req.body.restaurant_city
 		var rest_hastags = req.body.rest_hastags
@@ -48,22 +53,21 @@ module.exports = function(app){
 			text=text+'"hashtag":{ "$in":['+hash_array_values+']}';
 		}
 		text=text+"}";
+		text = text+',"limit":'+5+',"offset":'+req.body.offset
 		text=text+"}}";
 		console.log(text)
 		var obj = JSON.parse(text);
-		var query=JSON.stringify(obj);
-		console.log(JSON.stringify(obj))
+		console.log(obj)
 		request({
-			url: 'https://data.foodz.fr/v1/query',
+			url: 'http://data.hasura/v1/query',
 			method: 'POST',
-			headers: {'Content-Type':'application/json','Authorization': 'Bearer pd36y0icmdx0k4bbrta266bfq7hx13hy'},
+			headers: {'Content-Type':'application/json','X-Hasura-Role':'admin','X-Hasura-User-ID': req.body.hasura_userid},
 			json:obj
 		}, function(error, response, body){
 			if(error) {
 				console.log(error);
 			} else {
-				var search_value = body[0]
-				res.send(body)
+				require('.././https/temp_hasura_post')(req,res,type,url,head,body);
 			}
 		});
 	});
